@@ -1,0 +1,246 @@
+<div class="col-12"></div>
+
+
+<div class="col-12">
+    <div class="grid">
+
+        <div class="col-10 lg:col-5 xl:col-1" >
+           
+        </div>
+        <div class="col-10 lg:col-5 xl:col-2" *ngFor="let item of lstStatGold; index as i;">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">{{item.name}}</span>
+                        <div class="text-900 font-medium text-xl"> {{item.price}} </div>
+                    </div>
+
+                    <div *ngIf="item.isPositive === 'false'"
+                        class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-down text-orange-500 text-xl"></i>
+                    </div>
+                    <div *ngIf="item.isPositive === 'true'"
+                        class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-up text-cyan-500 text-xl"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- <div class="col-10 lg:col-5 xl:col-2" >
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <p-chart type="doughnut" [data]="doughnetgolddata"  ></p-chart>
+
+
+                </div>
+
+            </div>
+        </div> -->
+    </div>
+</div>
+
+
+<div class="col-12">
+    <div class="grid">
+        <div class="col-10 lg:col-5 xl:col-1" > </div>
+        <div class="col-10 lg:col-5 xl:col-2" *ngFor="let item of lstStatSilver; index as i;">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">{{item.name}}</span>
+                        <div class="text-900 font-medium text-xl"> {{item.price}} </div>
+                    </div>
+
+                    <div *ngIf="item.isPositive === 'false'"
+                        class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-down text-orange-500 text-xl"></i>
+                    </div>
+                    <div *ngIf="item.isPositive === 'true'"
+                        class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-up text-cyan-500 text-xl"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="grid">
+        <div class="col-10 lg:col-5 xl:col-1" > </div>
+
+        <div class="col-10 lg:col-5 xl:col-2" *ngFor="let item of lstStatPlat; index as i;">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">{{item.name}}</span>
+                        <div class="text-900 font-medium text-xl"> {{item.price}} </div>
+                    </div>
+
+                    <div *ngIf="item.isPositive === 'false'"
+                        class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-down text-orange-500 text-xl"></i>
+                    </div>
+                    <div *ngIf="item.isPositive === 'true'"
+                        class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-up text-cyan-500 text-xl"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="grid">
+        <div class="col-10 lg:col-5 xl:col-1" > </div>
+
+        <div class="col-10 lg:col-5 xl:col-2" *ngFor="let item of lstStatPlad; index as i;">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">{{item.name}}</span>
+                        <div class="text-900 font-medium text-xl"> {{item.price}} </div>
+                    </div>
+
+                    <div *ngIf="item.isPositive === 'false'"
+                        class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-down text-orange-500 text-xl"></i>
+                    </div>
+                    <div *ngIf="item.isPositive === 'true'"
+                        class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                        [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-arrow-up text-cyan-500 text-xl"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="col-12">
+    <div class="card">
+        <!--gold-feed.com metal pricing start-->
+        <div style="width: 100%; height: 578px"><iframe
+                src="https://gold-feed.com/charts/goldfeed29v9234ltlvl234l66l324/chart.php" scrolling="no" height="100%"
+                width="100%" frameborder="0"></iframe></div>
+        <!--gold-feed.com metal pricing end-->
+    </div>
+</div>
+
+<!-- 
+<div class="col-12">
+    <div class="card">
+        <h3> {{metaltype}} - {{metalName}} Rate </h3>
+        <div class="p-fluid p-formgrid grid">
+
+            <div class="col-6">
+                <div class="card">
+
+                    <p-table #dt1 [value]="lstmetal" dataKey="id" [rows]="1" [rowHover]="true"
+                        styleClass="p-datatable-gridlines" [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="header">
+                            <tr>
+
+                                <th>
+                                    <div class="flex justify-content-between align-items-center">
+                                        Price Troy Ounce
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="flex justify-content-between align-items-center">
+                                        Price Gram 24k
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <div class="flex justify-content-between align-items-center">
+                                        Price Gram 22k
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <div class="flex justify-content-between align-items-center">
+                                        Price Gram 21k
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="flex justify-content-between align-items-center">
+                                        Price Gram 20k
+                                    </div>
+                                </th>
+
+
+                                <th>
+                                    <div class="flex justify-content-between align-items-center">
+                                        Price Gram 18k
+                                    </div>
+                                </th>
+
+
+
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-crypto>
+                            <tr>
+                                <td>
+
+                                    {{crypto.price}} {{crypto.currency}}
+                                </td>
+                                <td>
+                                    {{crypto.price_gram_24k}} {{crypto.currency}}
+                                </td>
+                                <td>
+                                    {{crypto.price_gram_22k}} {{crypto.currency}}
+                                </td>
+
+                                <td>
+                                    {{crypto.price_gram_21k}} {{crypto.currency}}
+                                </td>
+                                <td>
+                                    {{crypto.price_gram_20k}} {{crypto.currency}}
+                                </td>
+                                <td>
+                                    {{crypto.price_gram_18k}} {{crypto.currency}}
+                                </td>
+
+
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="7">No Crypto found.</td>
+                            </tr>
+                        </ng-template>
+
+                    </p-table>
+                </div>
+            </div>
+
+
+            <div class="col-6">
+                <div class="card">
+                   
+                    <p-chart type="bar" [data]="multiAxisData"></p-chart>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div> -->

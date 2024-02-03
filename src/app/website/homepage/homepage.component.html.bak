@@ -1,0 +1,232 @@
+	
+
+<!-- <div class="col-12" *ngFor="let headline of lstbreaking">
+    <div class="card" style="background-color: #fede10;">
+       
+         <h5>  Breaking News :  {{headline.articleHeading}} </h5>
+       
+    </div>
+</div> -->
+    <app-marketheader  class="maretheader-bar"></app-marketheader>
+
+
+
+<div class="col-12 pt-0 md:pb-0 pb-5">
+    <div class="block-content">
+       
+
+        <div class="grid lg:p-l-r-9 lg:pb-5 lg:pt-5 md:p-8 p-fluid p-formgrid pt-0">
+        <div class="field col-12 md:col-8 md:pr-4 rtl-p-1rem">
+
+        <p-dataView #dv [value]="lstHeaderNews" [paginator]="false" [rows]="9" layout="grid">           
+
+            <ng-template let-product pTemplate="gridItem" let-index="rowIndex">
+                <div class="col-12 md:col-12 hover-effect-news" *ngIf="index === 0">
+                    <div class="grid p-fluid p-formgrid relative feature-img-hero-sec m-0 pb-4 mb-3">
+                    <div class="col-12 md:col-12 news-img-hover-effect p-0 md:h-30rem h-23rem">
+                        <a routerLink="/news/{{product.articleId}}">  <img src="{{storageUrl}}/{{product.mainImage}}"style="width: 100%;cursor: pointer;" /></a>   
+                    </div>
+                    <div class="col-12 md:col-12 p-0 pt-3">                      
+                        <div>            
+                            <div class="fs-22 font-bold">
+                                <div class="flex align-items-center mt-2 mb-2">
+                                    <div class="category-name">{{product.categoryName}}</div>
+                                    <div class="border-circle surface-300 mx-2" style="width: 0.25rem; height: 0.25rem;"></div>
+                                    <div class="publish-date">{{product.publishDate}}</div>
+                                    <div class="border-circle surface-300 mx-2" style="width: 0.25rem; height: 0.25rem;"></div>
+                                    <div class="region-name">{{product.regionName}}</div>
+                                </div>
+                                <a  routerLink="/news/{{product.articleId}}">
+                                    <label class="col-4-sec-row">
+                                        {{product.articleHeading}}
+                                    </label> 
+                                </a></div>
+                            
+                            <!-- <p-chip label="{{product.categoryName}}" styleClass="m-1"></p-chip>
+                            <p-chip label="{{product.regionName}}" styleClass="m-1"></p-chip>
+                            <p-chip label="{{product.publishDate}}" styleClass="m-1"></p-chip>
+                            <p-chip label="{{product.readTime}}" styleClass="m-1"></p-chip> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 hover-effect-news pt-2 md:pb-3" *ngIf="index > 0">
+                <div style="cursor: pointer;" class="flex w-26rem">
+                    <div class="col-12 h-7rem w-7rem md:col-4 md:mr-3 mr-3 news-img-hover-effect p-0">
+                        <a routerLink="/news/{{product.articleId}}"> 
+                            <img src="{{storageUrl}}/{{product.mainImage}}"style="width: 100%;cursor: pointer;" /> 
+                        </a>
+                    </div>
+                    <div class="md:col-8 text-center">
+                       
+                        <div class="mb-2 text-left col-4-sec-row-category">{{product.categoryName}}</div>
+                        <div class="text-2xl font-bold">
+                            <a  class="primary-color" routerLink="/news/{{product.articleId}}"> 
+                                <label class="col-4-sec-row-heading">
+                                    {{product.articleHeading}}
+                                </label> 
+                            </a></div>
+ 
+                    </div>
+                  
+                </div>
+          </div>
+                 <!-- <div class="col-12 md:col-6 hover-effect-news p-2 pt-3 pb-3" *ngIf="index > 0">
+                    <div style="cursor: pointer;">
+                        <div class="news-img-hover-effect h-19rem">
+                            <a routerLink="/news/{{product.articleId}}"> 
+                                <img src="{{storageUrl}}/{{product.mainImage}}"style="width: 100%;cursor: pointer;" /> 
+                            </a>
+                        </div>
+                        <div class="text-center">
+                           
+                            <div class="mb-2 mt-3 text-left">{{product.categoryName}}</div>
+                            <div class="text-2xl font-bold">
+                                <a  class="primary-color" routerLink="/news/{{product.articleId}}"> 
+                                    <label >
+                                        {{product.articleHeading}}
+                                    </label> 
+                                </a></div>
+     
+                        </div>
+                      
+                    </div>
+                </div> -->
+            </ng-template>
+        </p-dataView>                    
+    </div>
+    <div class="field col-12 md:pl-4 md:col-4 relative left-full-h-border rtl-p-1rem">
+        <app-headline></app-headline>
+    </div>
+    </div>
+</div>
+</div>
+<div class="bg-black-alpha-90 grid lg:p-l-r-9 md:p-8 p-fluid p-formgrid pt-0 pb-0 mb-5 featured-sec evodd p-3">
+    <div class="col-12 field pt-7 md:pt-3 md:pb-0 pb-5">
+        <div class="block-content">
+            <h1 class="text-white mb-4 md:pl-4 md:pr-4"> {{'Featured' | translate}}</h1>
+           <app-newsbycategory></app-newsbycategory>
+        </div>
+    </div>
+</div>
+<div class="grid lg:p-l-r-9 md:p-8 p-fluid p-formgrid pt-0 evodd p-3">
+    <div class="col-12 field pt-4 border-top-3 mt-5 md:mt-0 md:pb-0 pb-5">
+        <div class="block-content">
+            <div class="flex align-items-center">
+                <h1 class="hover-pr-15 rtl-hover-pl-15 md:-ml-2 mr-2"> {{'Finance' | translate}}</h1>
+                <i class="pi pi-arrow-right" ></i>
+            </div>
+           <app-newsbycategory [CatId]="0" ></app-newsbycategory>
+        </div>
+    </div>
+</div>
+<div class="grid lg:p-l-r-9 md:p-8 p-fluid p-formgrid pt-0 evodd p-3">
+    <div class="col-12 field pt-4 border-top-3 mt-5 md:mt-0 md:pb-0 pb-5">
+        <div class="block-content">
+            <div class="flex align-items-center">
+                <h1 class="hover-pr-15 rtl-hover-pl-15 md:-ml-2 mr-2"> {{'Automobiles' | translate}}</h1>
+                <i class="pi pi-arrow-right" ></i>
+            </div>
+           <app-newsbycategory [CatId]="2" ></app-newsbycategory>
+        </div>
+    </div>
+</div>
+<div class="grid lg:p-l-r-9 md:p-8 p-fluid p-formgrid pt-0 evodd p-3">
+    <div class="col-12 field pt-4 border-top-3 mt-5 md:mt-0 md:pb-0 pb-5">
+        <div class="block-content">
+            <div class="flex align-items-center">
+                <h1 class="hover-pr-15 rtl-hover-pl-15 md:-ml-2 mr-2"> {{'Technology' | translate}}</h1>
+                <i class="pi pi-arrow-right" ></i>
+            </div>
+           <app-newsbycategory [CatId]="3" ></app-newsbycategory>
+        </div>
+    </div>
+</div>
+<div class="grid lg:p-l-r-9 md:p-8 p-fluid p-formgrid pt-0 evodd p-3">
+    <div class="col-12 field pt-4 border-top-3 mt-5 md:mt-0 md:pb-0 pb-5">
+        <div class="block-content">
+            <div class="flex align-items-center">
+                <h1 class="hover-pr-15 rtl-hover-pl-15 md:-ml-2 mr-2"> {{'Legal' | translate}}</h1>
+                <i class="pi pi-arrow-right" ></i>
+            </div>
+           <app-newsbycategory [CatId]="4" ></app-newsbycategory>
+        </div>
+    </div>
+</div>
+<div class="grid lg:p-l-r-9 md:p-8 p-fluid p-formgrid pt-0 evodd p-3">
+    <div class="col-12 field pt-4 border-top-3 mt-5 md:mt-0 md:pb-0 pb-5">
+        <div class="block-content">
+            <div class="flex align-items-center">
+                <h1 class="hover-pr-15 rtl-hover-pl-15 md:-ml-2 mr-2"> {{'Work' | translate}}</h1>
+                <i class="pi pi-arrow-right" ></i>
+            </div>
+           <app-newsbycategory [CatId]="6" ></app-newsbycategory>
+        </div>
+    </div>
+</div>
+<div class="grid lg:p-l-r-9 md:p-8 p-fluid p-formgrid pt-0 evodd p-3">
+    <div class="col-12 field pt-4 border-top-3 mt-5 md:mt-0 md:pb-0 pb-5">
+        <div class="block-content">
+            <div class="flex align-items-center">
+                <h1 class="hover-pr-15 rtl-hover-pl-15 md:-ml-2 mr-2"> {{'Markets' | translate}}</h1>
+                <i class="pi pi-arrow-right" ></i>
+            </div>
+           <app-newsbycategory [CatId]="5"></app-newsbycategory>
+        </div>
+    </div>
+</div>
+
+<!-- <app-crypto></app-crypto>
+
+<div class="col-12">
+    <div class="card">
+        <h3>  {{'Metal_Prices' | translate}} 
+
+        </h3>
+	
+<div class="col-12">
+    <div class="card">
+<div style="width: 100%; height: 578px"><iframe src="https://gold-feed.com/charts/goldfeed29v9234ltlvl234l66l324/chart.php"
+     scrolling="no" height="100%" width="100%" frameborder="0"></iframe></div>
+    </div>
+</div>
+    </div>
+    
+</div> -->
+
+<!-- <div class="block-content">
+    <div class="ng-star-inserted">
+        <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+            <div class="flex flex-wrap align-items-center justify-content-between">
+                <div class="w-full lg:w-6 pr-0 lg:pr-4">
+                    <div class="font-bold text-900 text-4xl mb-3">Trusted By</div>
+                    <p class="text-700 m-0 text-xl lg:w-10">Millions of individuals, corporations, startups and institutes work with us.</p>
+                </div>
+                <div class="w-full lg:w-6 mt-4 lg:mt-0">
+                    <div class="grid grid-nogutter">
+                        <div class="col-12 sm:col-6 xl:col-4 p-4"><img src="assets/layout/images/logos/peak.svg" alt="Image" height="40"></div>
+                        <div class="col-12 sm:col-6 xl:col-4 p-4"><img src="assets/layout/images/logos/charot.svg" alt="Image" height="40"></div>
+                        <div class="col-12 sm:col-6 xl:col-4 p-4"><img src="assets/layout/images/logos/hyper.svg" alt="Image" height="40"></div>
+                        <div class="col-12 sm:col-6 xl:col-4 p-4"><img src="assets/layout/images/logos/hodly.svg" alt="Image" height="40"></div>
+                        <div class="col-12 sm:col-6 xl:col-4 p-4"><img src="assets/layout/images/logos/franki.svg" alt="Image" height="40"></div>
+                        <div class="col-12 sm:col-6 xl:col-4 p-4"><img src="assets/layout/images/logos/alfred.svg" alt="Image" height="40"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="block-content">
+	<div class="ng-star-inserted">
+		<div class="surface-section">
+			<div class="py-8 px-3 md:px-6shadow-2 text-center news-letter-main-div">
+				<div class="text-white font-bold text-5xl mb-3 capitalize">Stay in touch with us</div><span class="block text-white font-medium text-xl">Subscribe for updates to ensure that you don�t miss any important news from us.</span>
+				<div class="mt-7 mb-3 relative sm:w-30rem mx-auto">
+					<input type="text" value="" placeholder="Your email" class="appearance-none bg-indigo-600 border-1 py-4 pl-3 w-full p-component text-black bg-white outline-none">
+					<button type="button" pbutton="" pripple="" label="Join" class="p-element p-ripple absolute p-button p-component bg-primery-color"><span class="p-button-label">Join</span><span class="p-ink"></span></button>
+				</div><span class="text-white">We ensure to protect your privacy. <a tabindex="0" class="cursor-pointer text-white">Privacy Policy</a></span>
+            </div>
+		</div>
+	</div>
+</div>

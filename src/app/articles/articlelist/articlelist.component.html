@@ -1,0 +1,109 @@
+<div class="col-12">
+    <div class="card">
+        <h4 translate>Article Definitions</h4>
+	
+<div class="col-12">
+    <div class="card">
+        <div class="flex justify-content-between flex-column sm:flex-row">
+            <h6 translate>List Of Articles</h6>
+            <button pButton label="{{'Add New'|translate}}" class="p-button mb-2 mx-2" icon="pi pi-plus-circle" (click)="AddNew()" ></button>
+        </div>
+      
+       
+        <p-table #dt1 [value]="lstArticle" dataKey="id" [rows]="10"  [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['authorName']" responsiveLayout="scroll">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-between flex-column sm:flex-row">
+                    <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left mb-2">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" #filter (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="{{'Search Keyword'|translate}}" class="w-full"/>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                            Article Heading
+                            <p-columnFilter type="text" field="articleHeading" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                            Category Name
+                            <p-columnFilter type="text" field="categoryName" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                  
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                            Region Name
+                            <p-columnFilter type="text" field="regionName" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                 
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                            Read Time
+                            <p-columnFilter type="text" field="readTime" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                            Publish Date
+                            <p-columnFilter type="date" field="publishDate" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                  
+                    <th translate>
+                        Edit
+                    </th>
+                    
+                 
+                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-article>
+                <tr>
+                    <td >
+                        <img src="{{storageUrl}}/{{article.mainImage}}" style="width: 5rem;" />
+                    </td>
+                    <td >
+                       
+                        {{article.articleHeading}}
+                    </td>
+                    <td >
+                        {{article.categoryName}}
+                    </td>
+                    <td >
+                        {{article.regionName}}
+                    </td>
+                   
+                    <td >
+                        {{article.readTime}}
+                    </td>
+                    <td >
+                        {{article.publishDate | date:'dd/MM/yyyy ,HH:mm:ss' }}
+                    </td>
+                   
+                   <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="edit(article)" class="p-button-rounded p-button-info p-button-outlined mr-2 mb-2"></button>
+
+                   </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No Articles found.</td>
+                </tr>
+            </ng-template>
+           
+        </p-table>
+    </div>
+</div>
+
+</div>
+</div>

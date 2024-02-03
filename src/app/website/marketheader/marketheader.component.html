@@ -1,0 +1,44 @@
+
+<div class="col-12  p-0" >
+    <div class="ticker-wrapper-h" style="height: 3rem">
+       
+        <!-- <div class="heading" style="z-index: 1000">
+        
+            <div class="ng-trigger ng-trigger-overlayAnimation  p-menu p-component p-menu-overlay ng-star-inserted " style="transform-origin: center top; top: 2663px; left: 364px;">
+                <select  class="form-control p-menu-list p-reset " [(ngModel)]="selectedMarket" (change)="GetAllCryptoAndMetal()">            
+                    <option  [ngValue]="markt[0]" class="p-element  p-menuitem ng-star-inserted">
+                        <span class="p-menuitem-text ng-star-inserted">{{'Crypto_Currency' | translate}}</span></option>  
+                        <option  [ngValue]="markt[1]" class="p-element  p-menuitem ng-star-inserted">
+                            <span class="p-menuitem-text ng-star-inserted">{{'Metal_Prices' | translate}}</span></option>  
+                            <option  [ngValue]="markt[2]" class="p-element  p-menuitem ng-star-inserted">
+                                <span class="p-menuitem-text ng-star-inserted">{{'Markets' | translate}}</span></option>  
+                 
+                </select> 
+            </div>
+        
+
+
+
+        </div> -->
+        
+        <ul class="news-ticker-h surface-50">
+            <li *ngFor="let item of lstStat; index as i;"><a [routerLink]="[item.link]" class="flex flex-row-reverse align-content-center fs-12">
+                <h5 class="align-content-center flex mx-2 fs-13 mb-0 font-semibold">{{item.name}} <i class="pi pi-caret-up mx-2" *ngIf="item.isPositive === 'true'" style="font-size: 1rem;color: #1ecd93;"></i>
+                    <i class="pi pi-caret-down mx-2 flex align-items-center" *ngIf="item.isPositive === 'false'" style="font-size: 1rem;color: #ff433d;"></i>
+                </h5>  
+                {{item.price}}</a></li>
+            <!-- <li><a href="">What is Lorem Ipsum?</a></li>
+            <li><a href="">Why do we use it?</a></li>
+            <li><a href="">Where does it come from?</a></li>
+            <li><a href="">Where can I get some?</a></li> -->
+        </ul>
+    </div>
+</div>
+
+
+<!-- TradingView Widget BEGIN -->
+<!-- <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Quotes</span></a> by TradingView</div>
+    <div #tradingview></div>
+  </div> -->

@@ -1,0 +1,74 @@
+label{
+	color: #00735e;
+    text-align: left;
+    display: block;
+    // margin-left: 1.2rem;
+    font-weight: 300 !important;
+    font-size: 15px;
+}
+
+
+
+  
+ 
+  :host ::ng-deep p-tag .p-tag-value{
+       padding: 3px;
+    
+      } 
+
+      .back2{
+        background-color: #f2f2f2;
+    }
+
+    @media only  screen and (max-width: 993px){
+.fontSize{
+  font-size: small !important
+}
+    }
+    @media only  screen and (max-width: 720px){
+.imSize{
+  width: 8rem !important
+}
+    }
+   
+
+    
+
+    
+.tagAr {
+  border-right-style: solid;
+  border-right-color: #000000;
+  text-align: start !important
+}
+
+.secLine{
+  border-bottom: 1.5px solid #e02426 !important
+}
+
+a{
+  label{
+    color: #162056 
+  }
+}
+
+// .bg{
+//   background-image: url(../../../assets/images/Untitled-01.jpg);
+//   background-position: center; /* Center the image */
+//   background-repeat: no-repeat; /* Do not repeat the image */
+//   background-size: cover; /* Resize the background image to cover the entire container */
+// }
+
+.head-text{
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 200px; 
+  // height: 1.2em; 
+  white-space: nowrap;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 1.5px solid #35488a !important;
+  box-shadow: 2px 2px #35488a !important;
+  text-align: justify;
+}

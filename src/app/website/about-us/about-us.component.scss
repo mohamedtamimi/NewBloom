@@ -1,0 +1,200 @@
+.lg\:mx-8 {
+	margin-left: 0rem !important;
+	margin-right: 0rem !important;
+}
+
+
+#home {
+	.site-logo {
+		top: 1rem;
+		left: 2.4rem;
+		width: 8rem;
+		min-height: 8rem;
+	}
+}
+
+.golddiv {
+	color: white;
+	border: 2px solid;
+	height: 1.5rem;
+	padding: 0.7rem;
+	display: flex;
+	align-items: center;
+	margin-top: 0.8rem;
+	transition: all .2s ease-out;
+
+	h6 {
+		margin-right: 1rem;
+		align-items: center;
+		margin-top: 1rem;
+	}
+}
+
+
+.ticker-wrapper-h {
+	display: flex;
+	position: relative;
+	overflow: hidden;
+}
+
+.news-ticker-h:hover {
+	animation-play-state: paused;
+}
+
+.stick-heder {
+	width: 100%;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	transition: 0.65s top cubic-bezier(0.3, 0.73, 0.3, 0.74);
+
+}
+
+.news-ticker-h li {
+
+	display: flex;
+	width: 100%;
+	white-space: nowrap;
+
+	display: inline-block;
+	width: 100%;
+	white-space: nowrap;
+	margin-left: 3rem;
+	// position: relative;
+	left: 30%;
+}
+
+.logomenu {
+	position: absolute;
+	top: 46px;
+	width: 54px;
+	height: 65px;
+	padding-inline-start: -1rem;
+	left: 90px;
+
+}
+
+
+@media only screen and (max-width: 720px) {
+	.headerDis {
+		flex-direction: column;
+		align-items: center;
+		height:max-content
+	}
+}
+@media only  screen and (max-width: 720px){
+	.test {
+		display: none;
+	}
+	}
+.hidden {
+	display: none;
+}
+
+:host ::ng-deep .p-chip.custom-chip {
+	background: var(--primery);
+	color: var(--primary-color-text);
+	margin-left: 0.5rem;
+	cursor: pointer;
+}
+
+:host ::ng-deep .p-chip.custom-chip:hover {
+	background: var(--secondary);
+	color: var(--primary-color-text);
+	margin-left: 0.5rem;
+	cursor: pointer;
+}
+
+:host ::ng-deep .p-menubar .p-submenu-list {
+	z-index: 9999;
+}
+
+.language-flag {
+	height: 15px;
+	width: 25px !important;
+}
+
+.news-ticker-h {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	padding-left: 90%;
+	z-index: 999;
+
+	animation: tic-h 30s infinite linear;
+
+}
+
+
+@keyframes tic-h {
+	0% {
+		left: 50%;
+	}
+
+	100% {
+		left: -100%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#home .site-logo {
+		top: 0px;
+		left: 2rem;
+		width: 4.1rem;
+		height: 4.1rem !important;
+		min-height: 4.1rem;
+	}
+}
+
+
+:host ::ng-deep p-menubarsub {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	font-size: large;
+
+}
+
+:host ::ng-deep .p-menubar.p-component {
+
+	border-top: none;
+	// border-bottom-color: #00735e;
+	border-bottom-width: 1.5px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+p-galleria {
+	direction: ltr;
+}
+
+.p-galleria-caption {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    width: 40%;
+}
+
+.content2 ::before {
+    Content: "\a";
+    White-space:pre; 
+}
+
+.head-text{
+    top: 20px;
+    position: relative;
+}
+
+.title{
+	text-align: justify;
+}
+
+.icon{
+	padding-right: 20px;
+    padding-left: 20px;
+    color: #162056;
+}
+
+.contact-head{
+    padding: 20px;
+}

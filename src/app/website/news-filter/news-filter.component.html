@@ -1,0 +1,215 @@
+<div class="col-12 bg" *ngIf="type=='category'">
+    <!-- <div class="dis grid"> -->
+        <div class="container">
+        <div class=" lg:col-12 md:col-12 custom-top">
+            <div class="col-12 md:col-2 flex ">
+                <label class="cusome-headline">
+                    {{category_Name}}
+                </label>
+            </div>
+            <p-dataView #dv [value]="articales" [paginator]="false" [rows]="9" layout="grid">
+                <ng-template let-product pTemplate="gridItem" let-index="rowIndex">
+                    <!-- <div class="  col-12 md:col-12 hover-effect-news relative feature-img-hero-sec" *ngIf="index === 0">
+                        <div routerLink="/news/{{product.articleId}}"
+                            class="grid pointer  card fadein animation-duration-1000  p-0 border-round-2xl">
+                            <div class="col-12 md:col-12 news-img-hover-effect p-0 md:h-30rem h-23rem broder-rd-card">
+                                <a routerLink="/news/{{product.articleId}}"> <img
+                                        src="{{storageUrl}}/{{product.mainImage}}"
+                                        style="width: 100%;cursor: pointer;" /></a>
+                            </div>
+                            <div class="col-12 md:col-12 md:pt-3 p-3">
+                                <div>
+                                    <div class=" font-bold">
+                                        <div style=" width: 100%; text-align: start" class="py-2">
+                                            <label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
+                                                {{product.categoryName}}</label>
+                                        </div>
+                                        <label class="col-4-sec-row font-bold" style="font-size: 2rem;"> {{product.articleHeading}} </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-12 md:col-3 hover-effect-news " *ngIf="num>index">
+                        <div style="cursor: pointer;width: 96%; display: flex; flex-flow: wrap;min-height: 14vh"
+                            class="flex card p-0 broder-rd-card" >
+                            
+                            <div class="news-img-hover-effect p-0 broder-rd-card">
+                                <a routerLink="/news/{{product.articleId}}">
+                                    <img src="{{storageUrl}}/{{product.mainImage}}" />
+                                </a>
+                            </div>
+                            <div class="col-12 md:col-8 ">
+                                <div style="text-align: start" >
+                                    <!-- <label >
+                                        {{product.categoryName}}
+                                    </label> -->
+                                    <a class="primary-color" routerLink="/news/{{product.articleId}}">
+                                        <div class="head-text"> {{product.articleHeading}} </div>
+                                    </a>
+                                </div>
+                                <!-- <div class="text-sm font-bold">
+                                    <a class="primary-color" routerLink="/news/{{product.articleId}}">
+                                        <label class="col-4-sec-row-heading"> {{product.articleHeading}} </label>
+                                    </a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+            <div class="text-center" style="cursor: pointer;" (click)="onclick()">
+                {{"ReadMore" | translate}} <br>
+                <i class="fa fa-sort-down" style="font-size: 50px; position: relative; bottom:25px;"></i>
+            </div>
+            <!-- <button *ngIf="ReadMore>num" (click)="onclick()" type="button" class="btn  btn-danger text-center">
+                {{ReadMore?"Read More":"Read Less"}}
+              </button> -->
+        </div>
+        </div>
+        <!-- <div class="lg:col-4 md:col-12">
+            <app-headline></app-headline>
+        </div> -->
+    <!-- </div> -->
+
+</div>
+
+
+
+
+
+<div class="col-12 bg" *ngIf="type=='tag'">
+    <!-- <div class="dis grid"> -->
+        <div class="container">
+        <div class=" lg:col-12 md:col-12 custom-top">
+            <div class="col-12 md:col-2 flex ">
+                <label class="cusome-headline">
+                    {{category_Name}}
+                </label>
+            </div>
+            <p-dataView #dv [value]="articales" [paginator]="false" [rows]="9" layout="grid">
+                <ng-template let-product pTemplate="gridItem" let-index="rowIndex">
+                    <!-- <div class="  col-12 md:col-12 hover-effect-news relative feature-img-hero-sec" *ngIf="index === 0">
+                        <div routerLink="/news/{{product.articleId}}"
+                            class="grid pointer  card fadein animation-duration-1000  p-0 border-round-2xl">
+                            <div class="col-12 md:col-12 news-img-hover-effect p-0 md:h-30rem h-23rem broder-rd-card">
+                                <a routerLink="/news/{{product.articleId}}"> <img
+                                        src="{{storageUrl}}/{{product.mainImage}}"
+                                        style="width: 100%;cursor: pointer;" /></a>
+                            </div>
+                            <div class="col-12 md:col-12 md:pt-3 p-3">
+                                <div>
+                                    <div class=" font-bold">
+                                        <div style=" width: 100%; text-align: start" class="py-2">
+                                            <label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
+                                                {{product.categoryName}}</label>
+                                        </div>
+                                        <label class="col-4-sec-row font-bold" style="font-size: 2rem;"> {{product.articleHeading}} </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-12 md:col-3 hover-effect-news"  >
+                        <div style="cursor: pointer;width: 96%; display: flex; flex-flow: wrap;min-height: 14vh"
+                            class="flex card p-0 broder-rd-card" *ngIf="num>'rowIndex'">
+                            <div class="news-img-hover-effect p-0 broder-rd-card">
+                                <a routerLink="/news/{{product.articleId}}">
+                                    <img src="{{storageUrl}}/{{product.mainImage}}" />
+                                </a>
+                            </div>
+                            <div class="col-12 md:col-8 ">
+                                <div style="text-align: start" >
+                                    <!-- <label >
+                                        {{product.categoryName}}
+                                    </label> -->
+                                    <a class="primary-color" routerLink="/news/{{product.articleId}}">
+                                        <div class="head-text"> {{product.articleHeading}} </div>
+                                    </a>
+                                </div>
+                                <!-- <div class="text-sm font-bold">
+                                    <a class="primary-color" routerLink="/news/{{product.articleId}}">
+                                        <label class="col-4-sec-row-heading"> {{product.articleHeading}} </label>
+                                    </a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+        </div>
+        <!-- <div class="lg:col-4 md:col-12">
+            <app-headline></app-headline>
+        </div> -->
+    <!-- </div> -->
+
+</div>
+
+
+
+
+<!-- <div class="grid pt-4" *ngIf="type=='tag'">
+    <div class="col-8">
+        <p-dataView #dv [value]="articales" [paginator]="false" [rows]="9" layout="grid">
+            <ng-template let-product pTemplate="gridItem" let-index="rowIndex">
+                <div class="  col-12 md:col-12 hover-effect-news relative feature-img-hero-sec" *ngIf="index === 0">
+                    <div routerLink="/news/{{product.articleId}}"
+                        class="grid pointer  card fadein animation-duration-1000  p-0 border-round-2xl">
+                        <div class="col-12 md:col-12 news-img-hover-effect p-0 md:h-30rem h-23rem broder-rd-card">
+                            <a routerLink="/news/{{product.articleId}}">
+                                <img src="{{storageUrl}}/{{product.mainImage}}"
+                                    style="width: 100%;cursor: pointer;" /></a>
+                        </div>
+                        <div class="col-12 md:col-12 md:pt-3 p-3">
+                            <div>
+                                <div class=" font-bold">
+                                    <div style=" width: 100%; text-align: start" class="py-2">
+                                        <label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
+                                            {{product.categoryName}}</label>
+                                    </div>
+                                    <label class="col-4-sec-row font-bold " style="font-size: 2rem;"> {{product.articleHeading}} </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 md:col-6 hover-effect-news  " routerLink="/news/{{product.articleId}}" *ngIf="index > 0">
+                    <div style="cursor: pointer;width: 96%; flex-flow: wrap;height: 96%"
+                        class=" card p-0 broder-rd-card news-img-hover-effect">
+                        <div class=" md:col-4 md:mr-3  p-0 broder-rd-card"
+                            style="display: contents;height: fit-content;">
+                                <img src="{{storageUrl}}/{{product.mainImage}}" width="500"  height="36vh" style="cursor: pointer;height: 36vh" />
+                        </div>
+                        <div class="col-12 md:col-8">
+                            <div style=" width: 100%; text-align: start" class="py-2">
+                                <label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
+                                    {{product.categoryName}}</label>
+                            </div>
+                            <div class="text-md font-bold">
+                                <a  routerLink="/news/{{product.articleId}}">
+                                    <label class="col-4-sec-row-heading"> {{product.articleHeading}} </label>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+    <div class="col-4">
+        <app-headline></app-headline>
+    </div>
+</div> -->
+
+
+
+
+
+
+<!-- <div class="col-12">
+    <div class="card">
+        <h3 class="pb-4">آخر</h3>
+        <app-newsbycategory></app-newsbycategory>
+    </div>
+</div> -->

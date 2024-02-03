@@ -1,0 +1,88 @@
+
+<p-toast  [baseZIndex]="10000"></p-toast>
+
+<div class="col-12">
+    <div class="card">
+        <h4 translate>Tags</h4>
+		<div class="p-fluid p-formgrid flex col-12">
+            <div class="field flex col-8 md:col-4" style="width: inherit">
+                <input pInputText id="Tag" class="mx-1"  placeholder="{{'Tag EN'|translate}}" type="text" [(ngModel)]="ObjTag.tagValue" />
+                <input pInputText id="Tag"  placeholder="{{'Tag AR'|translate}}" type="text" [(ngModel)]="ObjTag.tagValue_ar" />
+            </div>
+            <div class="field  md:col-2">
+                <button pButton label="{{'Save'|translate}}" class="p-button mb-2" icon="pi pi-plus-circle" (click)="AddNew()" ></button>
+            </div>
+          
+        </div>
+     
+<div class="col-12">
+    <div class="card">
+        <h6 translate>List Of Tags</h6>
+       
+        <p-table #dt1 [value]="lstTags" dataKey="id" [rows]="10"  [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-between flex-column sm:flex-row">
+                    <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left mb-2">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" #filter (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="{{'Search Keyword'|translate}}" class="w-full"/>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                           Tag EN
+                            <p-columnFilter type="text" field="tagValue" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                           Tag AR
+                            <p-columnFilter type="text" field="tagValue" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+              
+                   
+                    <th translate>
+                        Edit
+                    </th>
+                    <th translate>
+                        Delete
+                    </th>
+                 
+                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-tag>
+                <tr>
+                    <td style="min-width: 12rem;">
+                        {{tag.tagValue}}
+                    </td>
+                  
+                    <td style="min-width: 12rem;">
+                        {{tag.tagValue_ar}}
+                    </td>
+                    <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="edit(tag)" class="p-button-rounded p-button-info p-button-outlined mr-2 mb-2"></button>
+
+                   </td>
+                   <td>
+                    <button pButton pRipple type="button" icon="pi pi-trash" (click)="delete(tag)"  class="p-button-rounded p-button-danger p-button-outlined mr-2 mb-2"></button>
+
+                   </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No tags found.</td>
+                </tr>
+            </ng-template>
+           
+        </p-table>
+    </div>
+</div>
+
+</div>
+</div>

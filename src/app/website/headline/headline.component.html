@@ -1,0 +1,40 @@
+<!-- <div class=" font-semibold text-3xl py-2 px-2 text-right" translate>Popular</div> -->
+
+<!-- <p-virtualScroller [value]="lstheadline" scrollHeight="65vh">
+    <ng-template let-product pTemplate="item">
+        <a routerLink="/news/{{product.articleId}}">
+            <img src="{{storageUrl}}/{{product.mainImage}}" class="cursor-pointer h-full w-full md:mr-0 " />
+            <div class="p-2" >
+                <div style=" width: 100%;" class="py-6">
+                    <label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'"> {{product.categoryName}}</label>
+                </div>
+                <div clas="text-lg pt-1" style="text-align: start">
+                    <span class="font-bold">{{product.articleHeading}}</span>
+                    
+                </div>
+            </div>
+        </a>
+    </ng-template>
+</p-virtualScroller> -->
+
+
+<div class="row ">
+    <div class="cutom-spical" style="overflow: auto; height: 380px; display: flex;  flex-wrap: wrap;">
+      <div class="col-sm-6 shape" *ngFor="let product of lstheadline">
+        <div class="" style="background-color: #fff; border-radius: 5px; padding: 2px;">
+            <a routerLink="/news/{{product.articleId}}">
+                <img src="{{storageUrl}}/{{product.mainImage}}" class="cursor-pointer  w-full " style="height: 120px;" />
+                <div class="p-4" >
+                    <div class="py-2">
+                        <label class="CatId"> {{product.categoryName}}</label>
+                    </div>
+                    <div class=" pt-1">
+                        <span class="font-bold head-text">{{product.articleHeading}}</span>
+                        
+                    </div>
+                </div>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>

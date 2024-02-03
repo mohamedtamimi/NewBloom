@@ -1,0 +1,236 @@
+<p-toast [baseZIndex]="10000"></p-toast>
+
+<div class="col-12">
+    <div class="card">
+        <h4 translate>Article Definitions</h4>
+        <div class="p-fluid p-formgrid grid">
+
+            <div class="field col-12 md:col-4">
+                <label htmlFor="state" translate>Category</label>
+                <p-dropdown [options]="lstCategory" optionLabel="label" placeholder="Select a Category"
+                    optionValue="categoryId" [(ngModel)]="ObjArticle.fkCategoryId"></p-dropdown>
+            </div>
+            <div class="field col-12 md:col-4">
+                <label htmlFor="state" translate> Region</label>
+                <p-dropdown [options]="lstRegion" optionLabel="regionName" placeholder="Select a Region"
+                    optionValue="regionId" [(ngModel)]="ObjArticle.fkRegionId"></p-dropdown>
+            </div>
+            <div class="field col-12 md:col-4">
+                <label htmlFor="firstname2" translate>Read Time</label>
+                <input pInputText id="firstname2" type="text" [(ngModel)]="ObjArticle.readTime" />
+            </div>
+        </div>
+        <div class="p-fluid p-formgrid grid">
+
+            <div class="field col-12 md:col-4">
+                <label htmlFor="state" translate>Authors</label>
+                <p-multiSelect [(ngModel)]="lstSelectedAuthors" [options]="lstAuthors" optionLabel="authorName"
+                    placeholder="Select a Author" optionValue="aurthorId"></p-multiSelect>
+
+            </div>
+            <div class="field col-12 md:col-4">
+                <label htmlFor="state" translate> Tags</label>
+                <p-multiSelect [(ngModel)]="lstSelectedTags" [options]="lstTags" optionLabel="label"
+                    placeholder="Select a Tag" optionValue="id"></p-multiSelect>
+            </div>
+            <div class="field col-12 md:col-4">
+                <label htmlFor="articleSource" translate>Source</label>
+                <input pInputText id="articleSource" placeholder="Enter Source" type="text"
+                    [(ngModel)]="ObjArticle.articleSource" />
+            </div>
+            <div class="field col-12 md:col-12">
+                <label htmlFor="Hashtags" translate>Hashtags</label>
+                <p-chips [(ngModel)]="lsthash"></p-chips>
+            </div>
+        </div>
+        <p-accordion>
+
+            <p-accordionTab header="{{'Heading'|translate}}" [selected]="true" class="line-height-3 m-0">
+                <div class="p-fluid p-formgrid grid">
+
+                    <div class="field col-12 md:col-6" *ngFor="let heading of lstheading">
+                        <label htmlFor="firstname2" >{{'Article Heading'|translate}} : {{heading.languageName}}</label>
+                        <textarea pInputTextarea placeholder="Article Heading : {{heading.languageName}}"
+                            [(ngModel)]="heading.value" autoResize rows="3" cols="30"></textarea>
+
+                    </div>
+
+
+                </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'Text'|translate}}" class="line-height-3 m-0">
+                <div class="p-fluid p-formgrid grid">
+
+                    <div class="field col-12 md:col-12" *ngFor="let text of lsttext">
+                        <label htmlFor="firstname2" >{{'Article Text'|translate}} : {{text.languageName}}</label>
+                        <p-editor [(ngModel)]="text.value" [style]="{'height':'520px'}"></p-editor>
+
+                    </div>
+
+
+                </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'Pictures'|translate}}" class="line-height-3 m-0">
+
+                <div class="p-col-12 p-md-12">
+                </div>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="input" translate>Attach Pictures</label>
+                        <p-fileUpload #uploader name="myfile[]" chooseLabel="Choose File" customUpload="true"
+                            (uploadHandler)="myUploader($event)" [auto]="true"></p-fileUpload>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label htmlFor="firstname2" translate>Picture Description</label>
+                        <textarea pInputTextarea placeholder="{{'Picture Description'|translate}}" [(ngModel)]="objpic.pictureDesc"
+                            autoResize rows="3" cols="30"></textarea>
+
+                    </div>
+                    <div class="field col-12 md:col-12">
+
+                    </div>
+                    <div class="field col-12 md:col-2">
+                        <button pButton type="button" label="{{'Add'|translate}}" (click)="AddAtachment();"
+                            icon="pi pi-plus-circle"></button>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card">
+                        <p-table #dt1 [value]="lstpictures" dataKey="id" [rows]="10" [rowHover]="true"
+                            styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['authorName']"
+                            responsiveLayout="scroll">
+                            <ng-template pTemplate="caption">
+                                <div class="flex justify-content-between flex-column sm:flex-row">
+                                    <button pButton label="Clear" class="p-button-outlined mb-2"
+                                        icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                                    <span class="p-input-icon-left mb-2">
+                                        <i class="pi pi-search"></i>
+                                        <input pInputText type="text" #filter
+                                            (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="Search Keyword" class="w-full" />
+                                    </span>
+                                </div>
+                            </ng-template>
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>
+                                        <div class="flex justify-content-between align-items-center" translate>
+                                            Picture Name
+                                            <p-columnFilter type="text" field="picturePath" display="menu"
+                                                placeholder="Search by name"></p-columnFilter>
+                                        </div>
+                                    </th>
+
+                                    <th>
+                                        <div class="flex justify-content-between align-items-center" translate>
+                                            Desciption
+                                            <p-columnFilter type="text" field="pictureDesc" display="menu"
+                                                placeholder="Search by name"></p-columnFilter>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="flex justify-content-between align-items-center" translate>
+                                            Sequence
+                                            <p-columnFilter type="text" field="sequence" display="menu"
+                                                placeholder="Search by name"></p-columnFilter>
+                                        </div>
+                                    </th>
+                                    <th translate>
+                                        Delete
+                                    </th>
+
+
+
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-pic>
+                                <tr>
+                                    <td>
+                                        <img src="{{storageUrl}}/{{pic.picturePath}}" style="width: 5rem;" />
+                                    </td>
+                                    <td>
+                                        {{pic.pictureDesc}}
+                                    </td>
+                                    <td>
+                                        {{pic.sequence}}
+                                    </td>
+                                    <td>
+                                        <button pButton pRipple type="button" icon="pi pi-trash"
+                                            (click)="DeletePic(pic)"
+                                            class="p-button-rounded p-button-danger p-button-outlined mr-2 mb-2"></button>
+
+
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="7">No Pictures found.</td>
+                                </tr>
+                            </ng-template>
+
+                        </p-table>
+                    </div>
+                </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{'Videos'|translate}}" class="line-height-3 m-0">
+
+                <div class=" col-12 md:col-4 block" *ngFor="let vid of ObjArticle.articleVideos; let i = index">
+                    <div style="display: flex; justify-content: space-between">
+                      <label htmlFor="videoUrl{{i}}">Video URL ({{i+1}}) </label>
+                      <i *ngIf="ObjArticle.articleVideos.length > 1" (click)="deletVideo(i)" class="pi pi-trash text-danger cursor-pointer"></i>
+                    </div>
+                    <input pInputText id="videoUrl{{i}}" style="width: 100%;" type="url" [(ngModel)]="vid.videoPath" />
+                    <div class="col-12">
+                        <iframe width="900" height="400"  [src]="convertToEmbedUrl(vid.videoPath)|safe" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe> 
+                    </div>
+                  
+                  </div>
+                  
+                <div class="p-fluid  ">
+
+                    <div class="field col-12 md:col-2">
+                        <p-button type="button" (click)="pushNewVideo()" label="{{'Add New Video'|translate}}" styleClass="p-button-raised p-button-text"
+                            icon="pi pi-plus"></p-button>
+                    </div>
+
+
+
+                </div>
+            </p-accordionTab>
+
+        </p-accordion>
+
+        <div class="grid m-2" *ngIf="type === 3">
+            <div class="col-12 md:col-2">
+                <div class="field-radiobutton mb-0">
+                    <p-radioButton name="status" value="1" [(ngModel)]="ObjArticle.fkStatusId"></p-radioButton>
+                    <label class="px-2" translate>Approve</label>
+                </div>
+            </div>
+            <div class="col-12 md:col-2">
+                <div class="field-radiobutton  mb-0">
+                    <p-radioButton name="status" value="2" [(ngModel)]="ObjArticle.fkStatusId"></p-radioButton>
+                    <label class="px-2" translate>Reject</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="p-fluid p-formgrid grid pt-2">
+
+            <div class="field col-12 md:col-2">
+                <button pButton type="button" [disabled]="loading" label="{{'Save'|translate}}" (click)="Submit();" icon="pi pi-plus-circle"></button>
+            </div>
+
+
+
+        </div>
+        <div class="col-12">
+            <p-progressBar *ngIf="btnload" mode="indeterminate"></p-progressBar>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+.tagAr {
+    border-right-style: solid;
+    border-right-color: black;
+    text-align: start !important
+}
+
+@media only screen and (max-width: 720px) {
+	.dis {
+		display: block !important;
+	}
+}
+
+.head-text{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 200px; 
+    // height: 1.2em; 
+    white-space: nowrap;
+}
+
+.border-style{
+    border: 1px solid #000;
+}
+
+.cusome-headline{
+    background-color: #f2e35f;
+    font-weight: 800;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.custom-top{
+    top: -20px;
+    position: relative;
+}
+
+.bg{
+    background-image: url(../../../assets/images/Untitled-01.jpg);
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}

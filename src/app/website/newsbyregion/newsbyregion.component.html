@@ -1,0 +1,18 @@
+<p-carousel [value]="lstRegArticles" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="carouselResponsiveOptions">
+    <ng-template let-product pTemplate="item">
+        <div class="border-round m-2 text-center p-2">
+            <div class="text-center">
+                <div class="my-5">                        
+                    <a routerLink="/news/{{product.articleId}}">
+                     <img src="{{storageUrl}}/{{product.mainImage}}"  class="shadow-4" style="width: 100%; border-radius: 1rem;"/>
+                    </a>
+                </div>
+                <div>
+                    <h4 style="color: black;font-weight: bold;" class="mb-1">
+                        <a    routerLink="/news/{{product.articleId}}"> {{product.articleHeading}}</a></h4>                      
+                   
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

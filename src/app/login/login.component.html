@@ -1,0 +1,41 @@
+
+
+<div class="block-content">
+	<div class="ng-star-inserted">
+		<div class="px-4 py-8 md:px-6 lg:px-8" style="background: url('assets/layout/images/login-bg.jpg') no-repeat; background-size: cover;">
+			<div class="flex flex-wrap">
+				<div class="w-full lg:w-6 p-4 lg:p-7 surface-card">
+					<div class="text-900 text-2xl font-medium mb-6" translate>Login</div>
+					<label for="email3" class="block text-900 font-medium mb-2"translate>Email</label>
+					<input id="email3" type="text" [(ngModel)]="username" placeholder="Email address" pinputtext="" class="p-inputtext p-component p-element w-full mb-4">
+					<label for="password1" class="block text-900 font-medium mb-2" translate>Password</label>
+					<input id="password1" type="password" placeholder="Password" [(ngModel)]="password" class="p-inputtext p-component p-element w-full mb-4">
+                    <div class="flex align-items-center justify-content-between mb-6">
+						<div class="flex align-items-center">
+							<p-checkbox id="rememberme3" styleclass="mr-2" class="p-element">
+								<div class="mr-2 p-checkbox p-component">
+									<div class="p-hidden-accessible">
+										<input type="checkbox" value="undefined" aria-checked="false">
+									</div>
+									<div class="p-checkbox-box"><span class="p-checkbox-icon"></span></div>
+								</div>
+								<!---->
+							</p-checkbox>
+							<label for="rememberme3" class="ml-2" translate>Remember me</label>
+						</div><a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer" translate>Forgot password</a></div>
+					<button pButton (click)="Redirect()" label="{{'Login'|translate}}" icon="pi pi-user" class="p-element p-ripple w-full p-button p-component"><span class="p-button-label">Login</span><span class="p-ink"></span></button>
+					<!-- <p-divider align="center" styleclass="my-6" class="p-element">
+						<div role="separator" class="my-6 p-divider p-component p-divider-horizontal p-divider-solid p-divider-center">
+							<div class="p-divider-content"><span class="text-600 font-normal text-sm">OR</span></div>
+						</div>
+					</p-divider>
+					<button pbutton="" pripple="" label="Sign In with GitHub" icon="pi pi-github" class="p-element p-ripple w-full p-button-secondary p-button p-component mb-2"><span class="p-button-icon p-button-icon-left pi pi-github" aria-hidden="true"></span><span class="p-button-label">Sign In with GitHub</span><span class="p-ink"></span></button>
+					<button pbutton="" pripple="" label="Sign In with Google" icon="pi pi-google" class="p-element p-ripple w-full p-button p-component p-button-danger"><span class="pi pi-google p-button-icon p-button-icon-left" aria-hidden="true"></span><span class="p-button-label">Sign in With Google</span><span class="p-ink"></span></button>
+                    <div class="mt-6 text-center text-600"> Don't have an account? <a tabindex="0" class="font-medium text-blue-500">Sign up</a></div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!---->
+	<!---->
+</div>

@@ -1,0 +1,177 @@
+<div id="home" class="flex headerDis justify-content-between surface-0 overflow-hidden" style="height: 3rem; background-color: #162056 !important;
+color: #fff;">
+    <div class="lg:col-4 md:col-12 align-self-baseline">
+        <div class="flex pt-4 px-3" style="justify-content: space-around; padding-top: 0rem !important">
+            <span>{{'Language'|translate}}</span>
+                <div  style="padding-inline-end: 15px;">
+                    <a href="" [routerLink]="" *ngIf="language === 'ar'" title="English" (click)="ChangeLanguage('en')">
+                        <img src="/assets/layout/images/US-United-States-Flag-icon.png" class="language-flag"></a>
+                    <a href="" [routerLink]="" *ngIf="language === 'en'" title="عربي" (click)="ChangeLanguage('ar')">
+                        <img src="/assets/layout/images/UAE-flag-icon.jpg" class="language-flag"></a>
+                </div>
+             
+            <div style="display: contents;">
+                <!-- <div class="px-1 ">
+                    {{updateDateTime().day}}
+                </div> -->
+                <span>{{'Date'|translate}}
+                {{updateDateTime().date}}
+                </span>
+                <!-- <i class="pi pi-calendar-plus px-1" style="font-size: 1.5rem;color: #006837;"></i> -->
+            </div>
+            <div style="display: contents;" class="px-2">
+                <span>{{'Time'|translate}}
+                    {{updateDateTime().time}}
+                </span>
+                <!-- <i class="pi pi-clock px-1" style="font-size: 1.5rem;color: #006837;"></i> -->
+            </div>
+            <div>
+                <span style="position: relative; bottom: 5px;">{{'Weather'|translate}}</span>
+                <a title="Weather"  class="">
+                    <img style="width: 3rem; position: relative; bottom: 5px;"
+                        src="assets/layout/images/weather/{{ObjWeatherResponse.current_weather.weathercode}}.png">
+                       <!-- <span>{{ObjWeatherResponse.current_weather.temperature}}°C</span> -->
+                    </a>
+                <p-overlayPanel #op [showCloseIcon]="true" [style]="{width: '450px'}">
+                    <ng-template pTemplate>
+
+                    </ng-template>
+                </p-overlayPanel>
+                
+            </div>
+        </div>
+
+        <!-- <div class="flex pt-4" style="justify-content: space-evenly;height: fit-content">
+            <i class="pi pi-facebook pointer" style="font-size: 1.5rem;color: #0866ff; "></i>
+            <i class="pi pi-youtube pointer" style="font-size: 1.5rem;color: #ff0000;"></i>
+            <i class="pi pi-linkedin pointer" style="font-size: 1.5rem;color: #0a66c2;"></i>
+            <i class="pi pi-twitter pointer" style="font-size: 1.5rem;color: #1d9bf0;"></i>
+            <i class="pi pi-instagram pointer" style="font-size: 1.5rem;color: #fe2477;"></i>
+        </div> -->
+
+    </div>
+
+    <!-- <a appStickyMenu class="flex m-2 lg:col-7 md:col-12 w-auto" style="height: fit-content" href="#">
+        <img src="assets/images/logo.png" class=" lg:mr-2 site-logo z-1">
+    </a> -->
+  
+</div>
+<div style="z-index: 9999;">
+    <p-menubar *ngIf="items.length" [baseZIndex]='999' class="target" [model]="items" styleClass=" bg-white flex-row-reverse "
+        [baseZIndex]="10000">
+    </p-menubar>
+        
+    <a  href="#">
+        <img src="assets/images/Logo1.png" style="height: 4rem; width: 14rem;" class="mr-0 logomenu  lg:mr-2">
+    </a>
+</div>
+
+
+
+
+
+<div class="block-content">
+	<div class="ng-star-inserted">
+		<div class="surface-section px-4  md:px-6 lg:px-12">  
+            <div class="container py-5">
+                <div class="row">
+                  <div class="col-9 flex border-1 border-300 contact-head">
+                   <div class="icon">
+                      <img class="handshake" src="../../../assets/images/Logo2.png" width="50px" />
+                    </div>
+                        <h3 class="head-text"><span>{{'privacy' | translate}}</span></h3>
+                </div>
+                  <div class="col-3" ></div>
+                </div>
+              </div>    
+              <div class="container py-5">
+                <!-- <div class="row">
+                  <div class="col-8 flex">
+                        <h3 class="title"><span>نبذة عن شبكة ابوظبي الاخبارية </span></h3>
+                        
+                </div>
+                  <div class="col-4 flex" >
+                  </div>
+                </div> -->
+                <br>
+                <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">إذا استخدمت أحد التطبيقات الموجودة عبر موقع شبكة ابوظبي الاخبارية أو راسلتنا عن طريق البريد الإلكتروني، وقمت بتزويدنا ببيانات شخصية، فإننا من الممكن أن نتشارك مع جهات حكومية أو إدارات أخرى هذه البيانات، حتى يتسنّى لنا خدمتك بشكل أفضل، أو الجهات غير الحكومية المصرح لها بأداء خدمات محددة، وبتقديمك لمعلوماتك الشخصية من خلال الموقع الإلكتروني لإدارة شبكة ابوظبي الاخبارية يعتبر موافقة مسبقة منك على تخزين ومعالجة واستخدام تلك المعلومات، وتحتفظ إدارة شبكة ابوظبي الاخبارية بالحق الكامل في الكشف عن أي معلومة للجهات المختصة، وفي أي وقت إذا دعت الضرورة إلى ذلك.
+                        </h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">و شبكة ابوظبي الاخبارية  تحمّلك المسؤولية بمفردك عن دقة البيانات التي ترسلها من خلال هذا الموقع. </h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">و شبكة ابوظبي الاخبارية  تسعى جاهدة للحفاظ على بياناتك الشخصية، وذلك من خلال تأمين التخزين الإلكتروني والبيانات الشخصية المرسلة باستخدام التقنيات الأمنية المناسبة.</h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">وموقع شبكة ابوظبي الاخبارية يحتوي على روابط إلكترونية لمواقع أو بوابات تستخدم طرقاً لحماية المعلومات وخصوصياتها تختلف عن الطرق المستخدمة لدينا، ونحن غير مسؤولين عن محتويات وطرق خصوصيات المواقع الأخرى، وننصحك بالرجوع إلى إشعارات الخصوصية الخاصة بتلك المواقع.</h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+              </div>  
+
+              <!-- <div class="container py-5">
+                <div class="row ">
+                  <div class="col-1">
+                    <span class="flex">
+                        
+                        <img class="handshake" src="../../../assets/images/partnerships_contact.png" width="90px" />
+                    </span>
+                </div>
+                  <div class="col-6" >
+                    <h5 class="content1 flex"><span>{{'phone' | translate}}</span></h5>
+                    <h5 class="content2 flex"><span>{{'email' | translate}}</span></h5>
+                  </div>
+                </div>
+              </div>  -->
+
+               <div class="container">
+                <div class="row">
+                <div class="col-6 ">
+                    <!-- <div class="border-bottom-3 border-300"></div> -->
+            </div>
+            <div class="col-2 flex">
+  
+            </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="container py-5">
+                <div class="row">
+                <div class="col-6 ">
+                    <h5 class="title flex"><span>
+                        {{'advertisewithus-text2' | translate}}</span></h5>
+            </div>
+            <div class="col-2 flex">
+  
+            </div>
+                </div>
+              </div>  -->
+			<!-- <div class="flex justify-content-between align-items-center py-5"><span>� 2023 NET_AD</span>
+				<div class="flex align-items-center justify-content-between"><a class="cursor-pointer text-500 md:ml-3 ml-2"><i class="pi pi-twitter text-xl"></i></a><a class="cursor-pointer text-500 md:ml-3 ml-2"><i class="pi pi-facebook text-xl"></i></a><a class="cursor-pointer text-500 md:ml-3 ml-2"><i class="pi pi-github text-xl"></i></a></div>
+			</div> -->
+		</div>
+	</div>
+	<!---->
+	<!---->
+</div>
+<app-footer></app-footer>

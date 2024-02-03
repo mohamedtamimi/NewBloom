@@ -1,0 +1,104 @@
+<p-toast  [baseZIndex]="10000"></p-toast>
+
+<div class="col-12">
+    <div class="card">
+        <h4 translate>Author</h4>
+		<div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-6">
+                <label htmlFor="firstname2" translate>Author Name</label>
+                <input pInputText id="firstname2" type="text" [(ngModel)]="ObjAuthor.authorName" />
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="firstname2" translate>Author Name Arabic</label>
+                <input pInputText id="firstname2" type="text" [(ngModel)]="ObjAuthor.authorName_ar" />
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="firstname2" translate>Introduction</label>
+                <textarea pInputTextarea placeholder="Your Message" [(ngModel)]="ObjAuthor.introduction" autoResize rows="3" cols="30"></textarea>
+
+            </div>
+          
+          
+        </div>
+        <div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-2">
+                <button pButton label="{{'Add New'| translate}}" class="p-button mb-2" icon="pi pi-plus-circle" (click)="AddNew()" ></button>
+            </div>
+        </div>
+<div class="col-12">
+    <div class="card">
+        <h6 translate>List Of Authors</h6>
+       
+        <p-table #dt1 [value]="lstAuthor" dataKey="id" [rows]="10"  [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['authorName']" responsiveLayout="scroll">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-between flex-column sm:flex-row">
+                    <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left mb-2">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" #filter (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search Keyword" class="w-full"/>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                           Author Name
+                            <p-columnFilter type="text" field="authorName" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                           Author Name Arabic
+                            <p-columnFilter type="text" field="authorName_ar" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center" translate>
+                            Introduction
+                            <p-columnFilter type="text" field="introduction" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th translate>
+                        Edit
+                    </th>
+                    
+                    <th translate>
+                        Delete
+                    </th>
+                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-author>
+                <tr>
+                    <td >
+                        {{author.authorName}}
+                    </td>
+                    <td >
+                        {{author.authorName_ar}}
+                    </td>
+                    <td >
+                        {{author.introduction}}
+                    </td>
+                   <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="edit(author)" class="p-button-rounded p-button-info p-button-outlined mr-2 mb-2"></button>
+
+                   </td>
+                   <td>
+                    <button pButton pRipple type="button" icon="pi pi-trash" (click)="delete(author)"  class="p-button-rounded p-button-danger p-button-outlined mr-2 mb-2"></button>
+
+                   </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No Authors found.</td>
+                </tr>
+            </ng-template>
+           
+        </p-table>
+    </div>
+</div>
+
+</div>
+</div>

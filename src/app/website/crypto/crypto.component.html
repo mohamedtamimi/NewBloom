@@ -1,0 +1,155 @@
+<div class="col-12">
+    <div class="card">
+        <h2 style="font-weight:bold ;text-align: right;">   {{'Cryptocurrency' | translate}} 
+        </h2>
+	
+<div class="col-12">
+    <div class="card">
+        
+        <p-table #dt1 [value]="cryptoRes" dataKey="id" [rows]="10"  [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['authorName']" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                <tr>
+                  
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Name
+                            <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Symbol
+                            <p-columnFilter type="text" field="symbol" display="menu" placeholder="Search by symbol"></p-columnFilter>
+                        </div>
+                    </th>
+                  
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            CMC Rank
+                            <p-columnFilter type="text" field="cmc_rank" display="menu" placeholder="Search by cmc_rank"></p-columnFilter>
+                        </div>
+                    </th>
+                 
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Circulating Supply
+                            <p-columnFilter type="text" field="circulating_supply" display="menu" placeholder="Search by circulating_supply"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Total Supply
+                            <p-columnFilter type="text" field="total_supply" display="menu" placeholder="Search by total_supply"></p-columnFilter>
+                        </div>
+                    </th>
+                  
+                
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Max Supply
+                            <p-columnFilter type="text" field="max_supply" display="menu" placeholder="Search by max_supply"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Price
+                            <p-columnFilter type="text" field="price" display="menu" placeholder="Search by price"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Volume 24h
+                            <p-columnFilter type="text" field="volume_24h" display="menu" placeholder="Search by volume_24h"></p-columnFilter>
+                        </div>
+                    </th>
+                 
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Percent Change 1h
+                            <p-columnFilter type="text" field="percent_change_1h" display="menu" placeholder="Search by percent_change_1h"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Percent Change 24h
+                            <p-columnFilter type="text" field="percent_change_24h" display="menu" placeholder="Search by percent_change_24h"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Percent Change 7d
+                            <p-columnFilter type="text" field="percent_change_7d" display="menu" placeholder="Search by percent_change_7d"></p-columnFilter>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Market Cap
+                            <p-columnFilter type="text" field="market_cap" display="menu" placeholder="Search by market_cap"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Market Cap Dominance
+                            <p-columnFilter type="text" field="market_cap_dominance" display="menu" placeholder="Search by market_cap_dominance"></p-columnFilter>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-crypto>
+                <tr>
+                    <td >
+                       
+                        {{crypto.name}}
+                    </td>
+                    <td >
+                        {{crypto.symbol}}
+                    </td>
+                    <td >
+                        {{crypto.cmc_rank}}
+                    </td>
+                   
+                    <td >
+                        {{crypto.circulating_supply}}
+                    </td>
+                    <td >
+                        {{crypto.total_supply}}
+                    </td>
+                    <td >
+                        {{crypto.max_supply}}
+                    </td>
+                    <td >
+                        {{crypto.quote.usd.price}}
+                    </td>
+                    <td >
+                        {{crypto.quote.usd.volume_24h}}
+                    </td>
+                    <td >
+                        {{crypto.quote.usd.percent_change_1h}}
+                    </td>
+                    <td >
+                        {{crypto.quote.usd.percent_change_24h}}
+                    </td>
+                    <td >
+                        {{crypto.quote.usd.percent_change_7d}}
+                    </td>
+                    <td >
+                        {{crypto.quote.usd.market_cap}}
+                    </td>
+                    <td >
+                        {{crypto.quote.usd.market_cap_dominance}}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No Crypto found.</td>
+                </tr>
+            </ng-template>
+           
+        </p-table>
+    </div>
+</div>
+
+</div>
+</div>

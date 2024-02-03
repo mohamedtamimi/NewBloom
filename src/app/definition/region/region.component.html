@@ -1,0 +1,93 @@
+<p-toast  [baseZIndex]="10000"></p-toast>
+
+
+<div class="col-12">
+    <div class="card">
+        <h4 translate>Region</h4>
+		<div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-6">
+                <label htmlFor="firstname2" translate>Region Name</label>
+                <input pInputText id="firstname2" type="text" [(ngModel)]="ObjRegion.regionName" />
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="firstname2" translate>Region Name Arabic</label>
+                <input pInputText id="firstname2" type="text" [(ngModel)]="ObjRegion.regionName_ar" />
+            </div>
+          
+          
+        </div>
+        <div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-2">
+                <button pButton label="Save" class="p-button mb-2" icon="pi pi-plus-circle" (click)="AddNew()" ></button>
+            </div>
+        </div>
+<div class="col-12">
+    <div class="card">
+        <h6 translate>List Of Regions</h6>
+       
+        <p-table #dt1 [value]="lstRegion" dataKey="id" [rows]="10"  [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-between flex-column sm:flex-row">
+                    <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left mb-2">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" #filter (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search Keyword" class="w-full"/>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>
+                        <div class="flex justify-content-between align-items-center"translate>
+                           Region Name
+                            <p-columnFilter type="text" field="regionName" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center"translate>
+                           Region Name Arabic
+                            <p-columnFilter type="text" field="regionName_ar" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </div>
+                    </th>
+                   
+                    <th translate>
+                        Edit
+                    </th>
+                    
+                    <th translate>
+                        Delete
+                    </th>
+                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-region>
+                <tr>
+                    <td >
+                        {{region.regionName}}
+                    </td>
+                    <td >
+                        {{region.regionName_ar}}
+                    </td>
+                   <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="edit(region)" class="p-button-rounded p-button-info p-button-outlined mr-2 mb-2"></button>
+
+                   </td>
+                       
+                   <td>
+                    <button pButton pRipple type="button" icon="pi pi-trash" (click)="delete(region)" class="p-button-rounded p-button-danger p-button-outlined mr-2 mb-2"></button>
+
+                   </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No Category found.</td>
+                </tr>
+            </ng-template>
+           
+        </p-table>
+    </div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,111 @@
+<div class="container">
+<div class=" col-12">
+    <div class="p-fluid dis p-formgrid grid">
+        <div class="lg:col-9 md:col-12">
+            <div class="card">
+
+                <div class="col-12">
+                    <div class="p-fluid p-formgrid grid">
+                        <!-- <div class="md:col-2">
+                            <label>{{ObjArticle.publishDate | date:'medium'}}</label>
+                        </div> -->
+                        <div class="md:col-4">
+                            <p-chip label="{{ObjArticle.categoryName}}" styleClass="m-1"></p-chip>
+                            <p-chip label="{{ObjArticle.regionName}}" styleClass="m-1"></p-chip>
+                            <p-chip label="{{item.tagValue}}" *ngFor="let item of ObjArticle.articleTags;"
+                                styleClass="m-1"></p-chip>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h1> {{ObjArticle.articleHeading}}</h1>
+                </div>                        
+                <div class="md:col-6">
+                    <h4>{{ObjArticle.publishDate | date:'medium'}}</h4>
+                </div>
+                <div class="col-12">
+                    <p-tag severity="info" class="px-1" *ngFor="let item of ObjArticle.articleHashTags;">
+                        {{item.hashtagValue}}
+                    </p-tag>
+                </div>
+
+                <div class="col-12" >
+                    <p-galleria [value]="meadiArray" [showIndicators]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="galleriaResponsiveOptions"
+                        [containerStyle]="{'max-width': '800px', 'margin':'auto'}" [numVisible]="6" [circular]="true">
+
+                        <ng-template pTemplate="item" let-item>
+                            <img *ngIf="!item?.videoPath" src="{{storageUrl}}/{{item?.picturePath}}" style="width: 100%; display: block;max-height:55vh;" />
+                            <iframe *ngIf="item?.videoPath" width="800" height="400" [src]="item?.videoPath| safe" title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                        </ng-template>
+   
+
+                    </p-galleria>
+                </div>
+                <div class="col-12">
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="md:col-4">
+                            <label>{{ObjArticle.readTime}}</label>
+
+                        </div>
+                        <div class="md:col-1">
+                            <a href="javascript:void(0);" (click)="print()">
+                            <i class="pi pi-print" style="font-size: 1.2rem;color: #3f5390;" ></i>
+                        </a>
+                        </div>
+                        <!-- <div class="md:col-1">
+                            <i class="pi pi-share-alt" style="font-size: 1.2rem;color: #3f5390;"></i>
+                        </div> -->
+                        <div class="md:col-1">
+                            <a href="javascript:void(0);" (click)="socialShare('twitter')">
+                                <i class="pi pi-times" style="font-size: 1.2rem;color: #3f5390;"></i>
+                            </a>
+
+                        </div>
+                        <div class="md:col-1">
+                            <a href="javascript:void(0);" (click)="socialShare('linkedin')">
+                                <i class="pi pi-linkedin" style="font-size: 1.2rem;color: #3f5390;"></i>
+                            </a>
+
+                        </div>
+                        <div class="md:col-1">
+                            <a href="javascript:void(0);" (click)="socialShare('whatsapp')">
+                                <i class="pi pi-whatsapp" style="font-size: 1.2rem;color: #3f5390;"></i>
+                            </a>
+
+                        </div>
+                        <div class="md:col-1">
+                            <a href="javascript:void(0);" (click)="socialShare('facebook')">
+                                <i class="pi pi-facebook" style="font-size: 1.2rem;color: #3f5390;"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <h5 class="col-12" [innerHTML]="ObjArticle.articleText">
+
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="lg:col-3 md:col-12">
+            <!-- <app-headline></app-headline> -->
+            <div class="card">
+                <h3>آخر الأخبار</h3>
+                <app-newsbycategory></app-newsbycategory>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<!-- <div class="col-12">
+    <div class="card">
+        <h3>آخر</h3>
+        <app-newsbycategory></app-newsbycategory>
+    </div>
+</div> -->

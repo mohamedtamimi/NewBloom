@@ -1,0 +1,496 @@
+<div id="home" class="flex headerDis justify-content-between surface-0 overflow-hidden" style="height: 3rem; background-color: #162056 !important;
+color: #fff;">
+    <div class="lg:col-4 md:col-12 align-self-baseline">
+        <div class="flex pt-4 px-3" style="justify-content: space-around; padding-top: 0rem !important">
+            <span>{{'Language'|translate}}</span>
+                <div  style="padding-inline-end: 15px;">
+                    <a href="" [routerLink]="" *ngIf="language === 'ar'" title="English" (click)="ChangeLanguage('en')">
+                        <img src="/assets/layout/images/US-United-States-Flag-icon.png" class="language-flag"></a>
+                    <a href="" [routerLink]="" *ngIf="language === 'en'" title="عربي" (click)="ChangeLanguage('ar')">
+                        <img src="/assets/layout/images/UAE-flag-icon.jpg" class="language-flag"></a>
+                </div>
+             
+            <div style="display: contents;">
+                <!-- <div class="px-1 ">
+                    {{updateDateTime().day}}
+                </div> -->
+                <span>{{'Date'|translate}}
+                {{updateDateTime().date}}
+                </span>
+                <!-- <i class="pi pi-calendar-plus px-1" style="font-size: 1.5rem;color: #006837;"></i> -->
+            </div>
+            <div style="display: contents;" class="px-2">
+                <span>{{'Time'|translate}}
+                    {{updateDateTime().time}}
+                </span>
+                <!-- <i class="pi pi-clock px-1" style="font-size: 1.5rem;color: #006837;"></i> -->
+            </div>
+            <div>
+                <span style="position: relative; bottom: 5px;">{{'Weather'|translate}}</span>
+                <a title="Weather"  class="">
+                    <img style="width: 3rem; position: relative; bottom: 5px;"
+                        src="assets/layout/images/weather/{{ObjWeatherResponse.current_weather.weathercode}}.png">
+                       <!-- <span>{{ObjWeatherResponse.current_weather.temperature}}°C</span> -->
+                    </a>
+                <p-overlayPanel #op [showCloseIcon]="true" [style]="{width: '450px'}">
+                    <ng-template pTemplate>
+
+                    </ng-template>
+                </p-overlayPanel>
+                
+            </div>
+        </div>
+
+        <!-- <div class="flex pt-4" style="justify-content: space-evenly;height: fit-content">
+            <i class="pi pi-facebook pointer" style="font-size: 1.5rem;color: #0866ff; "></i>
+            <i class="pi pi-youtube pointer" style="font-size: 1.5rem;color: #ff0000;"></i>
+            <i class="pi pi-linkedin pointer" style="font-size: 1.5rem;color: #0a66c2;"></i>
+            <i class="pi pi-twitter pointer" style="font-size: 1.5rem;color: #1d9bf0;"></i>
+            <i class="pi pi-instagram pointer" style="font-size: 1.5rem;color: #fe2477;"></i>
+        </div> -->
+
+    </div>
+
+    <!-- <a appStickyMenu class="flex m-2 lg:col-7 md:col-12 w-auto" style="height: fit-content" href="#">
+        <img src="assets/images/logo.png" class=" lg:mr-2 site-logo z-1">
+    </a> -->
+  
+</div>
+<div style="z-index: 9999;">
+    <p-menubar *ngIf="items.length" [baseZIndex]='999' class="target" [model]="items" styleClass=" bg-white flex-row-reverse "
+        [baseZIndex]="10000">
+    </p-menubar>
+        
+    <a  href="#">
+        <img src="assets/images/Logo1.png" style="height: 4rem; width: 14rem;" class="mr-0 logomenu  lg:mr-2">
+    </a>
+</div>
+
+
+
+
+
+<div class="block-content">
+	<div class="ng-star-inserted">
+		<div class="surface-section px-4  md:px-6 lg:px-12">  
+            <div class="container py-5">
+                <div class="row">
+                  <div class="col-9 flex border-1 border-300 contact-head">
+                   <div class="icon">
+                      <img class="handshake" src="../../../assets/images/Logo2.png" width="50px" />
+                    </div>
+                        <h3 class="head-text"><span>{{'PrivacyPolice' | translate}}</span></h3>
+                </div>
+                  <div class="col-3" ></div>
+                </div>
+              </div>    
+              <div class="container py-5">
+                <div class="row">
+                  <div class="col-8 flex">
+                        <h3 class="title"><span>سياسات الاستخدام لموقع شبكة ابوظبي الاخبارية </span></h3>
+                        
+                </div>
+                  <div class="col-4 flex" >
+                  </div>
+                </div>
+                <br><br><br>
+                <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">هذا الموقع الإلكتروني تابع ل شبكة ابوظبي الاخبارية في دولة الامارات العربية المتحدة – ابوظبي ومرخص من المكتب الوطني للاعلام في دولة الامرارات العربية المتحدة ، ويشار لها لاحقاً بعبارة " شبكة ابوظبي الاخبارية " أو "الموقع" وهو متاح لاستخدامك الشخصي، ويخضع دخولك واستخدامك لهذا الموقع لبنود وشروط الاستخدام هذه، وكذلك يعد وصولك ودخولك إلى الموقع موافقة دون قيد أو شرط على بنود وشروط الاستخدام، سواء أكنت مستخدماً مسجلاً أم لم تكن، وتسري هذا الموافقة اعتباراً من تاريخ أول استخدام لك لهذا الموقع.</h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">يصبح أي تعديل لهذه البنود والشروط نافذاً فور إعلانه، ما لم يبين خلاف ذلك، ويعني استمرارك في استخدام هذا الموقع عقب إعلان أي تعديل قبولك التام لذلك التعديل.</h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">وتتضمن بنود وشروط الاستخدام القسم الخاص بسياسة الخصوصية وحقوق الملكية الفكرية.</h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">القيود على الاستخدام:</h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">باستخدامك لموقع شبكة ابوظبي الاخبارية ، تقر بالامتناع عما يلي:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">- توفير أو تحميل أو نسخ المحتوى والمواد أو البيانات أو الصور أو المعلومات الأخرى غير المملوكة لك أو التي لا تملك ترخيصاً بشأنها.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">-  استخدام هذا الموقع بأي طريقة لإرسال أي بريد إلكتروني تجاري أو غير مرغوب فيه، أو أي إساءة استخدام من هذا النوع لموقع شبكة ابوظبي الاخبارية.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">-  توفير أو تحميل ملفات على هذا الموقع تحتوى على فيروسات أو بيانات تالفة.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">- نشر أو إعلان أو توزيع أو تعميم مواد أو معلومات تحتوي تشويهاً للسمعة أو انتهاكاً للقوانين، أو مواد إباحية، أو بذيئة، أو مخالفة للآداب العامة، أو أي مواد أو معلومات غير قانونية من خلال موقع شبكة ابوظبي الاخبارية</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">- الاشتراك من خلال موقع شبكة ابوظبي الاخبارية في أنشطة غير مشروعة أو غير قانونية.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">- الإعلان - على موقع شبكة ابوظبي الاخبارية - عن أي منتج أو خدمة تجعلنا في وضع انتهاك لأي قانون أو نظام مطبق في أي مجال.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">- استخدام أي وسيلة أو برنامج أو إجراء لاعتراض أو محاولة اعتراض التشغيل الصحيح لموقع شبكة ابوظبي الاخبارية.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">- الالتزام والتقيد بالأنظمة والقوانين واللوائح التنفيذية السارية كافة داخل دولة الامارات العربية المتحدة وخارجها.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h4 class="title">استخدام الروابط إلى موقع شبكة ابوظبي الاخبارية :</h4>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">يجب عليك تقديم طلب محدد، والحصول على موافقة إدارة شبكة ابوظبي الاخبارية قبل إنشاء روابط إلكترونية لهذا الموقع، أو عرض أي من محتوياته في إطار، أو الاشتراك في أية نشاطات مماثلة.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">تحتفظ إدارة شبكة ابوظبي الاخبارية  بالحق في فرض أي شروط عند سماحها بإنشاء أي رابط إلكتروني لهذا الموقع أو أي من محتوياته، أو عرض هذا الموقع، أو أي من محتوياته في إطار.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">تحتفظ إدارة شبكة ابوظبي الاخبارية بكامل حقوقها في إيقاف وإعاقة أي ارتباط بأي شكل من الأشكال من أي موقع يحتوي على مواضيع غير ملائمة، أو فاضحة، أو متعدية، أو بذيئة، أو إباحية، أو غير لائقة، أو غير مقبولة، أو غير قانونية، أو أسماء، أو مواد، أو معلومات تخالف أي قانون، أو تنتهك أي حقوق للملكية الفكرية، أو لحقوق الخصوصية، أو حقوق العلنية.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">تحتفظ إدارة شبكة ابوظبي الاخبارية بحق تعطيل أي ارتباط بأي شكل من الأشكال غير مصرح به، ولا تتحمل أية مسؤولية عن المحتويات المتوفرة في أي موقع آخر يتم الوصول إليه عبر هذا الموقع أو الوصول منه لهذا الموقع.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">باستثناء ما هو وارد أعلاه يمنع منعاً باتاً نقل أو نسخ أو إنشاء روابط إلكترونية بموقع شبكة ابوظبي الاخبارية أو أي من محتوياته، أو عرض أي منها في إطار.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">الروابط من موقع شبكة ابوظبي الاخبارية :</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">يتم توفير روابط الاتصال بالبوابات و/أو مواقع الإنترنت الأخرى بغرض التسهيل لك، ونحن غير مسؤولين عن محتويات أو مصداقية البوابات و/أو المواقع التي نرتبط بها ولا نصادق على محتوياتها، واستخدام الروابط للوصول إلى تلك المواقع أو البوابات يتم على مسؤوليتك الخاصة تماماً.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">ونحن نستهدف استبدال الروابط الإلكترونية المقطوعة -التي لا تعمل- في المواقع الأخرى، ولكننا لا نستطيع أن نضمن أن هذا الروابط ستعمل بصورة دائمة.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">الحماية من الفيروسات:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">تبذل إدارة شبكة ابوظبي الاخبارية  كل الجهود لفحص واختبار محتويات هذا الموقع في كل مراحل الإنتاج، وننصحك بأن تقوم دائماً بتشغيل برنامج مضاد للفيروسات على كل المواد التي يتم إنزالها من الإنترنت، ونحن لا نعد مسؤولين عن أي خسارة أو انقطاع أو تلف لبياناتك أو جهاز الحاسب لديك، الذي قد يحدث أثناء الاتصال بهذا الموقع، أو عند استخدام مادة واردة من هذا الموقع.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">التنازل عن المطالبات:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">إن موقع شبكة ابوظبي الاخبارية أو أي موقع يعمل تحت مظلتها يمكن أن يستعمل بعض الخدمات المطلوبة لبرامجها الخاصة بالهاتف المتحرك.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">التنازل عن المطالبات</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">إن موقع شبكة ابوظبي الاخبارية والخدمات والمعلومات والمواد والوظائف المتاحة بها، أو التي يمكن الوصول إليها من خلال الموقع توفر لاستخدامكم الشخصي "كما هي" و"كما هي متاحة" دون أي إقرار أو وعود أو ضمانات من أي نوع، ما عدا الجهات الحكومية التي نرتبط معها بمحاضر استخدام مسبقة.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">ولا يمكننا أن نضمن أو أن نتحمل المسؤولية عن أي انقطاعات أو أخطاء أو تجاوزات قد تنشأ من استخدام هذا الموقع أو محتوياته أو أي موقع يرتبط به، سواء كان ذلك بعلمنا أو دون علمنا.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">أي اتصالات أو معلومات قد يقوم المستخدم بإرسالها من خلال هذا الموقع لن يكون له الحق في ملكيتها أو حق ضمان سريتها، كما أن أي استخدام أو استخدام تفاعلي يتضمنه هذا الموقع لا يضمن أو لا يقصد به أن يضمن للمستخدم أي حقوق أو تراخيص أو أية امتيازات من أي نوع.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">حدود المسؤولية:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">الخدمات الإلكترونية التي تقدمها المواقع الإلكترونية لإدارة شبكة ابوظبي الاخبارية عبر الإنترنت والحصول على معلومات بشأن الدوائر والجهات الحكومية المختلفة تقدم فقط لتسهيل الإجراءات اليدوية، وبهذا تقر بعلمك الكامل بأن الاتصالات عبر شبكة الإنترنت قد تتعرض للتدخل أو الاعتراض بواسطة الغير، وأن الموقع لا يستبدل المعلومات المتوفرة من خلال الجهات الرسمية، وأن الطلبات والإجراءات الإدارية يمكن اتخاذها مباشرة أمام الجهات المختصة، وعليه، فإن اللجوء إلى هذا الموقع يظل على مسؤوليتك الخاصة، ونحن لا نكون بأي حال من الأحوال مسؤولين عن أية خسارة أو ضرر من أي نوع قد تتكبده بسبب استخدامك أو زيارتك للموقع، أو اعتمادك على أي بيان أو رأي أو إعلان في الموقع، أو ينجم عن أي تأخير في التشغيل، أو تعثر الاتصال، أو مشكلات الدخول إلى شبكة الإنترنت، أو أعطال المعدات، أو البرامج، أو سلوك أو أفكار أي شخص يدخل إلى هذا الموقع.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">وبهذا تقر هنا وتوافق على أن وسيلتكم الحصرية والوحيدة لعلاج أي ضرر أو خسارة قد تحدث نتيجة دخولك أو استخدامك لهذا الموقع هي الامتناع عن استخدامه أو الدخول إليه أو عدم الاستمرار في ذلك.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">التعويض:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">بهذا تقر بعدم اتخاذ أي إجراء ضد إدارة شبكة ابوظبي الاخبارية أو أي من إداراتها وتأمينها من المسؤولية، وكذلك أية جهات أو موظفين أو وكلاء يكونون مسؤولين عن إدارة أو صيانة أو تحديث أو تقديم موقع شبكة ابوظبي الاخبارية ، وذلك من أي وجميع الالتزامات والمسؤوليات التي قد تطرأ في ما يتصل بأية مطالبة تنشأ عن أي إخلال من جانبك ببنود وشروط الاستخدام، أو أي من القوانين السارية سواء في دولة الامارات العربية المتحدة أو المكان الذي تقيم فيه.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">إنهاء الاستخدام:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">يجوز لنا حسب تقديرنا المطلق إنهاء أو تقييد أو إيقاف حقك في الدخول إلى الموقع واستخدامه دون إشعار ولأي سبب، بما في ذلك مخالفة شروط وبنود الاستخدام أو أي سلوك آخر قد نعتبره حسب تقديرنا الخاص غير قانوني أو مضراً بالآخرين، وفي حال الإنهاء، فإنه لن يكون مصرحاً لك بالدخول إلى هذا الموقع.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">حقوق الملكية:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">جميع حقوق المؤلف في هذا الموقع بما في ذلك على سبيل المثال لا الحصر، النص، والأعمال ، والرموز، والصور الفوتوغرافية والموسيقى والمواد السمعية والمرئية مملوكة لـ شبكة ابوظبي الاخبارية.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">وباستثناء ما يبين خلاف ذلك، لا يجوز لك بيع أو ترخيص أو تأجير أو تعديل أو نسخ أو استنساخ أو إعادة طبع أو تحميل أو إعلان أو نقل أو توزيع أو العرض بصورة علنية أو تحرير أو إنشاء أعمال مشتقة من أي مواد أو محتويات من هذا الموقع للجمهور أو لأغراض تجارية، دون الحصول على الموافقة الخطية المسبقة من إدارة شبكة ابوظبي الاخبارية  في دولة الامارات العربية المتحدة </h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">ويمنع منعاً باتاً أي تعديل لأي من محتويات الموقع، كما أن الرسومات والصور في هذا الموقع محمية بموجب حقوق النشر، ولا يجوز استنساخها أو استغلالها بأية طريقة كانت، دون موافقة خطية مسبقة من إدارة شبكة ابوظبي الاخبارية في دولة الامارات العربية المتحدة .</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">المرجعية القضائية:</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">بهذا توافق على الخضوع حصرياً للسلطات القضائية في دولة الامارات العربية المتحدة ووفق التشريعات المعمول بها في مارة أبوظبي ، في ما يتعلق بجميع المطالبات والخلافات التي تنشأ عن استخدامك لهذا الموقع.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">في حال تبين استخدامك لحقوق الطبع والنشر لـ شبكة ابوظبي الاخبارية خلافاً لما هو موضح في هذه الشروط، يحق لـ شبكة ابوظبي الاخبارية اتخاذ الإجراءات القضائية والقانونية بمواجهتك ومطالبتك بالتعويض المالي جراء ذلك، وإصدار الأمر القضائي بمنع الاستخدام، مع تحميلكم كافة النفقات القانونية.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">على الرغم مما ورد في هذه الأحكام يحق لـ شبكة ابوظبي الاخبارية اتخاذ الإجراءات القانونية والملاحقة القضائية والمطالبة إلى آخره لمواجهة أي انتهاك أو اعتداء في مكان إقامة المعتدي.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9 flex">    
+                        <h5 class="title">إدارة شبكة ابوظبي الاخبارية لا تتحمل مسؤولية أي بيانات خاطئة، على الرغم من أن البيانات المدخلة ستعد صحيحة.</h5>
+                  </div>
+                    <div class="col-3 flex" >
+                    </div>
+                  </div>
+              </div>  
+
+              <!-- <div class="container py-5">
+                <div class="row ">
+                  <div class="col-1">
+                    <span class="flex">
+                        
+                        <img class="handshake" src="../../../assets/images/partnerships_contact.png" width="90px" />
+                    </span>
+                </div>
+                  <div class="col-6" >
+                    <h5 class="content1 flex"><span>{{'phone' | translate}}</span></h5>
+                    <h5 class="content2 flex"><span>{{'email' | translate}}</span></h5>
+                  </div>
+                </div>
+              </div>  -->
+
+               <div class="container">
+                <div class="row">
+                <div class="col-6 ">
+                    <!-- <div class="border-bottom-3 border-300"></div> -->
+            </div>
+            <div class="col-2 flex">
+  
+            </div>
+                </div>
+              </div>
+
+
+              <!-- <div class="container py-5">
+                <div class="row">
+                <div class="col-6 ">
+                    <h5 class="title flex"><span>
+                        {{'advertisewithus-text2' | translate}}</span></h5>
+            </div>
+            <div class="col-2 flex">
+  
+            </div>
+                </div>
+              </div>  -->
+			<!-- <div class="flex justify-content-between align-items-center py-5"><span>� 2023 NET_AD</span>
+				<div class="flex align-items-center justify-content-between"><a class="cursor-pointer text-500 md:ml-3 ml-2"><i class="pi pi-twitter text-xl"></i></a><a class="cursor-pointer text-500 md:ml-3 ml-2"><i class="pi pi-facebook text-xl"></i></a><a class="cursor-pointer text-500 md:ml-3 ml-2"><i class="pi pi-github text-xl"></i></a></div>
+			</div> -->
+		</div>
+	</div>
+	<!---->
+	<!---->
+</div>
+<app-footer></app-footer>

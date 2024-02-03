@@ -1,0 +1,40 @@
+<p-toast [baseZIndex]="10000"></p-toast>
+
+<div class="col-12">
+    <div class="card">
+        <h4 translate>Assign Highlighted Articles</h4>
+       
+        <div class="col-12">
+            <div class="card">
+                <p-pickList #PL [style.direction]="utilities.language=='ar'?'rtl':'ltr'" class="dir" sourceHeader="{{'List Of Articles'|translate}}" [source]="lstSourceArticle" [target]="lstTragetArticle"
+                 targetHeader="{{'List of highlighted articles'|translate}}" [dragdrop]="true" filterBy="articleHeading" 
+                 [responsive]="true" [sourceStyle]="{'height':'600px'}" [targetStyle]="{'height':'600px'}" 
+                 sourceFilterPlaceholder="{{'Search by Heading'|translate}}" targetFilterPlaceholder="{{'Search by Heading'|translate}}">
+                 <ng-template let-product pTemplate="item">
+                   
+                     <div class="product-item">
+                        <div class="image-container">
+                            <img src="{{storageUrl}}/{{product.mainImage}}"  class="product-image" />
+                    </div>
+                         <div class="product-list-detail">
+                             <h5 class="p-mb-2">{{product.articleHeading}}</h5>                         
+                         </div>
+                         <div class="product-list-action">
+                             <h6 class="p-mb-2">{{product.publishDate | date: 'MM/dd/yyyy'}}</h6>
+                             <p-badge [value]="product.categoryName" severity="info" styleClass="mr-2"></p-badge>
+                         </div>
+                        </div>
+                  
+                 </ng-template>
+             </p-pickList>
+
+            </div>
+        </div>
+        <div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-10"></div>
+            <div class="field col-12 md:col-2">
+                <button pButton label="{{'Save'|translate}}" class="p-button mb-2" icon="pi pi-plus-circle" (click)="Save()" ></button>
+            </div>
+        </div>
+    </div>
+</div>

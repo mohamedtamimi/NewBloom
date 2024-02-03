@@ -1,0 +1,38 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Article, ArticleSearch } from 'src/app/class/class';
+import { GlobalService } from 'src/app/services/global.service';
+import { environment } from 'src/environments/environment';
+
+@Component({
+  selector: 'app-headline',
+  templateUrl: './headline.component.html',
+  styleUrls: ['./headline.component.scss']
+})
+export class HeadlineComponent implements OnInit {
+
+  lstheadline : ArticleSearch[];
+
+  public storageUrl = environment.StorageUrl;
+  constructor(private global : GlobalService, public router: Router) {
+    this.lstheadline = [];
+
+   }
+
+   ngOnInit(): void {
+
+
+    this.GetHighlightedArticles();
+    }
+    GetHighlightedArticles(){
+      let art = new Article();
+      art.fkArticleTypeId = 2;
+  
+      this.global.GetHighlightedArticles(art).subscribe(res =>{
+        this.lstheadline = res;
+  
+      });
+
+      }
+
+}
