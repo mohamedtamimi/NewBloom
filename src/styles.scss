@@ -621,6 +621,11 @@ html[dir="rtl"] {
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
 }
-
+.xlSide{
+   width: 60vw !important; 
+}
+.dr{
+    direction: rtl;
+}
 
 // Home Page CSS End

@@ -31,7 +31,7 @@
 
                 <div class="col-12" >
                     <p-galleria [value]="meadiArray" [showIndicators]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="galleriaResponsiveOptions"
-                        [containerStyle]="{'max-width': '800px', 'margin':'auto'}" [numVisible]="6" [circular]="true">
+                        [containerStyle]="{'max-width': '800px', 'margin':'auto','background':'rgb(228 246 255)'}" [numVisible]="6" [circular]="true">
 
                         <ng-template pTemplate="item" let-item>
                             <img *ngIf="!item?.videoPath" src="{{storageUrl}}/{{item?.picturePath}}" style="width: 100%; display: block;max-height:55vh;" />

@@ -26,6 +26,10 @@ import { ContactusComponent } from './website/contactus/contactus.component';
 import { PrivacyPolicyComponent } from './website/privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './website/about-us/about-us.component';
 import { PrivacyComponent } from './website/privacy/privacy.component';
+import { UsersComponent } from './users/users/users.component';
+import { RolesComponent } from './users/roles/roles.component';
+import { AuthGuard } from './guards/auth.guard';
+import { GuestGuard } from './guards/guest.guard';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -59,6 +63,7 @@ import { PrivacyComponent } from './website/privacy/privacy.component';
               },
             {
                 path: 'dashboard', component: AppMainComponent,
+                canActivate: [AuthGuard],
                 children: [
                    
                     {path: 'category', component: CategoryComponent},
@@ -75,12 +80,14 @@ import { PrivacyComponent } from './website/privacy/privacy.component';
                     {path: 'newsheadline', component: BreakingNewsHeaderComponent},
                     {path: 'categorylist', component: CategoryheaderComponent},
                     {path: 'regionlist', component: RegionheaderComponent},
+                    {path: 'users', component: UsersComponent },
+                    {path: 'roles', component: RolesComponent },
 
                 ],
             },
             {
-              path: "login",
-              component: NewsappcomponentComponent,
+              path: "login",component: NewsappcomponentComponent,
+              // canActivate: [GuestGuard],
               children: [
                 { path: "", component: LoginComponent },
               ],

@@ -146,6 +146,9 @@ import { ContactusComponent } from './website/contactus/contactus.component';
 import { PrivacyPolicyComponent } from './website/privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './website/about-us/about-us.component';
 import { PrivacyComponent } from './website/privacy/privacy.component';
+import { UsersComponent } from './users/users/users.component';
+import { InputComponent } from './shared/input/input.component';
+import { RolesComponent } from './users/roles/roles.component';
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
   }
@@ -295,7 +298,10 @@ export function createTranslateLoader(http: HttpClient) {
         ContactusComponent,
         PrivacyPolicyComponent,
         AboutUsComponent,
-        PrivacyComponent
+        PrivacyComponent,
+     UsersComponent,
+     RolesComponent,
+        
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

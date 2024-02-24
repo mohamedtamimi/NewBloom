@@ -11,8 +11,9 @@ import { UtilitiesService } from './utilities.service';
 export class GlobalService {
 
     private accessToken: any = '';
-
-    constructor(public http: HttpClient,public utilities : UtilitiesService) {
+    user = JSON.parse(sessionStorage.getItem('userAuth'))
+    api = 'http://newapibloom.bloomsit.tamimysoft.com/api'
+    constructor(public http: HttpClient, public utilities: UtilitiesService) {
     }
 
     private extractData(res: any) {
@@ -21,18 +22,18 @@ export class GlobalService {
         return body || {};
     }
     CreateHeaderWithLangAndCompany() {
-        this.accessToken = sessionStorage.getItem('token');
+        this.accessToken = this.user?.token
         const langid = this.utilities.getLanguage();
         let headers = new HttpHeaders({
-        Lang: langid=== 'en'? '1' : '2',
-          UserId: '1',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + this.accessToken
+            Lang: langid === 'en' ? '1' : '2',
+            UserId: '1',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.accessToken
         });
         return headers;
-      }
+    }
     private checkToken() {
-       // this.accessToken = this.utilities.getData('accessToken', '');
+        // this.accessToken = this.utilities.getData('accessToken', '');
     }
     errorHandler(error: { status: number; }) {
         if (error.status == 401) {
@@ -53,6 +54,106 @@ export class GlobalService {
                 success => success,
                 error => this.errorHandler(error)
             ));
+    }
+    private getHeaders() {
+        const headers = new HttpHeaders({
+            Authorization: `Bearer ${this.user.token}`,
+            'Accept-Language': localStorage.getItem('currentLang'),
+        });
+
+        return headers
+    }
+
+    getGroups() {
+        return this.http.get<any>(`${this.api}/SysGroup/GetGroups`, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    getPrev(groupId) {
+        return this.http.get<any>(`${this.api}/SysPrivilege/GetPrivilege/${groupId}`, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    createGroup(groupName, jobDesc) {
+        return this.http.post<any>(`${this.api}/SysGroup/AddGroup`, { groupName: groupName, jobDesc: jobDesc }, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    editGroup(groupName,id) {
+        return this.http.post<any>(`${this.api}/SysGroup/UpdateGroup/${id}`, { groupName: groupName }, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    createPrev(groupId, formId) {
+        return this.http.post<any>(`${this.api}/SysPrivilege/CreatePrivilege`, {
+            groupId,
+            formId,
+            "allowAdd": 0,
+            "allowSave": 0,
+            "allowView": 0,
+            "allowDelete": 0,
+            "allowPrint": 0
+        }, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    createUser(user) {
+        return this.http.post<any>(`${this.api}/SysUser/Register`, {
+            userName: user.userName,
+            userEmail: user.userEmail,
+            jobDesc: user.jobDesc,
+            userFullName: user.userFullName,
+            active: 1,
+            userDefaultLang: 'Ar',
+            phoneNo: `${user.phoneNo}`,
+            userPwd: user.userPwd,
+            groupId: user.groupId,
+            lastChangePassword: user.lastChangePassword,
+        }, {
+            // headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    updateUser(user) {
+        return this.http.post<any>(`${this.api}/SysUser/UpdateUser/${user.userId}`, {
+            userName: user.userName,
+            userEmail: user.userEmail,
+            userFullName: user.userFullName,
+            active: 1,
+            userDefaultLang: 'Ar',
+            phoneNo: `${user.phoneNo}`,
+            jobDesc: user.jobDesc,
+            userPwd: user.userPwd,
+            groupId: user.groupId,
+            lastChangePassword: user.lastChangePassword,
+        }, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    userStatus(user) {
+        return this.http.post<any>(`${this.api}/SysUser/UpdateUser/${user.userId}`, {
+            userName: user.userName,
+            userEmail: user.userEmail,
+            userFullName: user.userFullName,
+            active: user.active == 1 ? 0 : 1,
+            userDefaultLang: 'Ar',
+            phoneNo: `${user.phoneNo}`,
+            jobDesc: user.jobDesc,
+            userPwd: user.userPwd,
+            groupId: user.groupId,
+            lastChangePassword: user.lastChangePassword,
+        }, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    getForms() {
+        return this.http.get<any>(`${this.api}/SysForm/GetSysForm`, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
+    getUsers() {
+        return this.http.get<any>(`${this.api}/SysUser/GetUsers`, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
     }
 
     GetAllArticles(): Observable<any> {
@@ -129,29 +230,29 @@ export class GlobalService {
                 error => this.errorHandler(error)
             ));
     }
-    getFilters(id: any,type): Observable<any> {
+    getFilters(id: any, type): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
-        if (type=='category') {
+        if (type == 'category') {
             return this.http.get(environment.ApiUrl + 'GetArticlesByCategory/' + id, {
                 headers: headers
             }).pipe(
                 tap(
                     success => success,
                     error => this.errorHandler(error)
-                )); 
-        }else{
+                ));
+        } else {
             return this.http.get(environment.ApiUrl + 'TagArticle/' + id, {
                 headers: headers
             }).pipe(
                 tap(
                     success => success,
                     error => this.errorHandler(error)
-                )); 
+                ));
         }
-       
+
     }
-    ArticleHighlight(id:any,data: any): Observable<any> {
+    ArticleHighlight(id: any, data: any): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
@@ -164,11 +265,11 @@ export class GlobalService {
             ));
     }
 
-    ArticleRegionHighlight(id:any,regionid : any,data: any): Observable<any> {
+    ArticleRegionHighlight(id: any, regionid: any, data: any): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
-        return this.http.post(environment.ApiUrl + 'ArticleRegionHighlight/' + id + '/'+ regionid, data, {
+        return this.http.post(environment.ApiUrl + 'ArticleRegionHighlight/' + id + '/' + regionid, data, {
             headers: headers
         }).pipe(
             tap(
@@ -176,11 +277,11 @@ export class GlobalService {
                 error => this.errorHandler(error)
             ));
     }
-    ArticleCategoryHighlight(id:any,categoryid : any,data: any): Observable<any> {
+    ArticleCategoryHighlight(id: any, categoryid: any, data: any): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
-        return this.http.post(environment.ApiUrl + 'ArticleCategoryHighlight/' + id + '/'+ categoryid, data, {
+        return this.http.post(environment.ApiUrl + 'ArticleCategoryHighlight/' + id + '/' + categoryid, data, {
             headers: headers
         }).pipe(
             tap(
@@ -192,7 +293,7 @@ export class GlobalService {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
-        return this.http.post(environment.ApiUrl + 'ArticleHighlight',art, {
+        return this.http.post(environment.ApiUrl + 'ArticleHighlight', art, {
             headers: headers
         }).pipe(
             tap(
@@ -205,7 +306,7 @@ export class GlobalService {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
-        return this.http.post(environment.ApiUrl + 'GetArticlceToHighlight',art, {
+        return this.http.post(environment.ApiUrl + 'GetArticlceToHighlight', art, {
             headers: headers
         }).pipe(
             tap(
@@ -220,7 +321,7 @@ export class GlobalService {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
-        return this.http.post(environment.ApiUrl + 'GetArticlceToHighlightByRegionCategory',art, {
+        return this.http.post(environment.ApiUrl + 'GetArticlceToHighlightByRegionCategory', art, {
             headers: headers
         }).pipe(
             tap(
@@ -233,7 +334,7 @@ export class GlobalService {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
-        return this.http.post(environment.ApiUrl + 'GetHighlightArticleByRegionCategory',art, {
+        return this.http.post(environment.ApiUrl + 'GetHighlightArticleByRegionCategory', art, {
             headers: headers
         }).pipe(
             tap(
@@ -414,7 +515,7 @@ export class GlobalService {
                 error => this.errorHandler(error)
             ));
     }
-    
+
     GetAllRegions(): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
@@ -489,7 +590,7 @@ export class GlobalService {
     GetAllCategories(): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
-    
+
 
         return this.http.get(environment.ApiUrl + 'GetAllCategories', {
             headers: headers
@@ -630,7 +731,7 @@ export class GlobalService {
             ));
     }
 
-    
+
     GetLocation(): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
@@ -644,11 +745,11 @@ export class GlobalService {
             ));
     }
 
-    GetWeather(longitude :string,  latitude:string): Observable<any> {
+    GetWeather(longitude: string, latitude: string): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
-        return this.http.get(environment.ApiUrl + 'GetWeather/'+longitude + '/'+ latitude, {
+        return this.http.get(environment.ApiUrl + 'GetWeather/' + longitude + '/' + latitude, {
             headers: headers
         }).pipe(
             tap(
@@ -695,7 +796,7 @@ export class GlobalService {
             ));
     }
 
-    GetAllCryptoAndMetal(code : string): Observable<any> {
+    GetAllCryptoAndMetal(code: string): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 
@@ -708,8 +809,8 @@ export class GlobalService {
             ));
     }
 
-    
-    GetAllStatMetal(code : string): Observable<any> {
+
+    GetAllStatMetal(code: string): Observable<any> {
 
         let headers = this.CreateHeaderWithLangAndCompany();
 

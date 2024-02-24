@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,9 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   
   username: string;
 
-  constructor(public router: Router){
-    this.username = '';
-    this.password = '';
+  constructor(public router: Router,private authService:AuthService,public messageService?: MessageService,){
    }
 
   ngOnInit(): void {
@@ -50,6 +50,19 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('/dashboard');
     }
    
+  }
+
+  login() {
+    if (!this.password || !this.username) return this.messageService?.add({ severity: 'error', detail: 'من فضلك إدخل جميع المعلومات المطلوبة' });
+
+    this.authService.login(this.username, this.password).subscribe((user: any) => {
+
+      sessionStorage.setItem('userAuth', JSON.stringify(user))
+      this.router?.navigate(['/dashboard']);
+    }, error => {
+    
+      console.log(error);
+    })
   }
 
 }

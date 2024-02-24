@@ -1,22 +1,23 @@
 <div *ngIf="CatId == 5" class="grid ">
 	<ng-container *ngFor="let product of lstCatArticles; let index=index">
 
-	<div  class="lg:col-6 md:col-12  flex-row" >
-		<div  class="h-full ">
-			<div class="  h-full p-0 back  card border-round-2xl pointer fadeinleft  animation-duration-1000"
-				routerLink="/news/{{product.articleId}}">
+		<div class="lg:col-6 md:col-12  flex-row">
+			<div class="h-full ">
+				<div class="  h-full p-0 back  card border-round-2xl pointer fadeinleft  animation-duration-1000"
+					routerLink="/news/{{product.articleId}}">
 
-				<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
-					[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
-					<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
-						class='news-img-hover-effect' style="height: 250px;">
-						<img src="{{storageUrl}}/{{product.mainImage}}"
-							style="width: 100%;cursor: pointer;height: inherit;" /></a>
-					<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600" style="width: auto;height: 250px;"
-						[src]="product.articleVideos[0].videoPath| safe" title="YouTube video player" frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowfullscreen></iframe>
-				</div>
+					<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
+						[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
+						<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
+							class='news-img-hover-effect' style="height: 250px;">
+							<img src="{{storageUrl}}/{{product.mainImage}}"
+								style="width: 100%;cursor: pointer;height: inherit;" /></a>
+						<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600"
+							style="width: auto;height: 250px;" [src]="product.articleVideos[0].videoPath| safe"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					</div>
 					<div class="font-bold mt-2 px-1" style="text-align: start;">
 						<div style=" width: 8rem;" class="py-2">
 							<label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
@@ -26,11 +27,11 @@
 							<label class="col-4-sec-row mt-2" style="font-size: 20px !important;">
 								{{product.articleHeading}} </label>
 						</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- <div class="lg:col-6 md:col-12 flex flex-row " *ngIf="index > 1">
+		<!-- <div class="lg:col-6 md:col-12 flex flex-row " *ngIf="index > 1">
 			<div class="w-full flex flex-row h-full p-0 back flex-row   border-round-2xl pointer fadeinleft  animation-duration-1000"
 				routerLink="/news/{{product.articleId}}">
 
@@ -58,44 +59,45 @@
 			</div>
 		
 	</div> -->
-</ng-container>
+	</ng-container>
 
 </div>
 <div *ngIf="CatId == 6" class="grid">
 	<ng-container *ngFor="let product of lstCatArticles; let index=index">
 
-	<div  class="lg:col-6 md:col-12  flex-row" >
-		<div  class="h-full ">
-			<div class="  h-full p-0 back2  card border-round-2xl pointer fadeinleft  animation-duration-1000"
-				routerLink="/news/{{product.articleId}}">
+		<div class="lg:col-6 md:col-12  flex-row">
+			<div class="h-full ">
+				<div class="  h-full p-0 back2  card border-round-2xl pointer fadeinleft  animation-duration-1000"
+					routerLink="/news/{{product.articleId}}">
 
-				<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
-					[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
-					<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
-						class='news-img-hover-effect' style="height: 250px;">
-						<img src="{{storageUrl}}/{{product.mainImage}}"
-							style="width: 100%;cursor: pointer;height: inherit;" /></a>
-					<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600" style="width: auto;height: 250px;"
-						[src]="product.articleVideos[0].videoPath| safe" title="YouTube video player" frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowfullscreen></iframe>
-				</div>
-				<div class=" md:col-12 p-2">
-					<div class="font-bold mt-2">
-						<div style=" width: 100%;" class="py-2">
-							<label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
-								{{product.categoryName}}</label>
+					<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
+						[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
+						<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
+							class='news-img-hover-effect' style="height: 250px;">
+							<img src="{{storageUrl}}/{{product.mainImage}}"
+								style="width: 100%;cursor: pointer;height: inherit;" /></a>
+						<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600"
+							style="width: auto;height: 250px;" [src]="product.articleVideos[0].videoPath| safe"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					</div>
+					<div class=" md:col-12 p-2">
+						<div class="font-bold mt-2">
+							<div style=" width: 100%;" class="py-2">
+								<label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
+									{{product.categoryName}}</label>
+							</div>
+							<a routerLink="/news/{{product.articleId}}">
+								<label class="col-4-sec-row mt-2" style="font-size: 20px !important;">
+									{{product.articleHeading}} </label>
+							</a>
 						</div>
-						<a routerLink="/news/{{product.articleId}}">
-							<label class="col-4-sec-row mt-2" style="font-size: 20px !important;">
-								{{product.articleHeading}} </label>
-						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- <div class="lg:col-6 md:col-12 flex flex-row flex-warp" *ngIf="index > 1">
+		<!-- <div class="lg:col-6 md:col-12 flex flex-row flex-warp" *ngIf="index > 1">
 		<div class="w-full flex flex-row h-full p-0 back2 flex-row   border-round-2xl pointer fadeinleft  animation-duration-1000"
 			routerLink="/news/{{product.articleId}}">
 
@@ -123,7 +125,7 @@
 		</div>
 	
 </div> -->
-</ng-container>
+	</ng-container>
 
 </div>
 <div *ngIf="CatId == 4">
@@ -179,54 +181,56 @@
 <div *ngIf="CatId == 2" class="grid">
 	<ng-container *ngFor="let product of lstCatArticles; let index=index">
 
-	<div  class="lg:col-4 md:col-12  flex-row">
-		<div *ngIf="index <= 2" class="h-full w-full">
-			<div class="  h-full p-0 back  card border-round-2xl pointer fadeinleft  animation-duration-1000"
-				routerLink="/news/{{product.articleId}}">
+		<div class="lg:col-4 md:col-12  flex-row">
+			<div *ngIf="index <= 2" class="h-full w-full">
+				<div class="  h-full p-0 back  card border-round-2xl pointer fadeinleft  animation-duration-1000"
+					routerLink="/news/{{product.articleId}}">
 
-				<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
-				[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
-				<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
-					class='news-img-hover-effect' style="height: 250px;">
-					<img src="{{storageUrl}}/{{product.mainImage}}"
-						style="width: 100%;cursor: pointer;height: inherit;" /></a>
-				<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600" style="width: auto;height: 250px;"
-					[src]="product.articleVideos[0].videoPath| safe" title="YouTube video player" frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					allowfullscreen></iframe>
-			</div>
-				<div class=" md:col-12 p-2">
-					<div class="font-bold mt-2">
-						<div style=" width: 100%;" class="py-2">
-							<label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
-								{{product.categoryName}}</label>
+					<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
+						[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
+						<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
+							class='news-img-hover-effect' style="height: 250px;">
+							<img src="{{storageUrl}}/{{product.mainImage}}"
+								style="width: 100%;cursor: pointer;height: inherit;" /></a>
+						<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600"
+							style="width: auto;height: 250px;" [src]="product.articleVideos[0].videoPath| safe"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					</div>
+					<div class=" md:col-12 p-2">
+						<div class="font-bold mt-2">
+							<div style=" width: 100%;" class="py-2">
+								<label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
+									{{product.categoryName}}</label>
+							</div>
+							<a routerLink="/news/{{product.articleId}}">
+								<label class="col-4-sec-row mt-2" style="font-size: 20px !important;">
+									{{product.articleHeading}} </label>
+							</a>
 						</div>
-						<a routerLink="/news/{{product.articleId}}">
-							<label class="col-4-sec-row mt-2" style="font-size: 20px !important;">
-								{{product.articleHeading}} </label>
-						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="lg:col-12 md:col-12  " *ngIf="index > 2">
-		<div class="col-6">
-			<div class="w-full flex flex-row h-full p-0 back flex-row   border-round-2xl pointer fadeinleft  animation-duration-1000"
-				routerLink="/news/{{product.articleId}}">
+		<div class="lg:col-12 md:col-12  " *ngIf="index > 2">
+			<div class="col-6">
+				<div class="w-full flex flex-row h-full p-0 back flex-row   border-round-2xl pointer fadeinleft  animation-duration-1000"
+					routerLink="/news/{{product.articleId}}">
 
-				<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
-					[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
-					<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
-						class='news-img-hover-effect' style="height: 250px;">
-						<img src="{{storageUrl}}/{{product.mainImage}}"
-							style="width: 100%;cursor: pointer;height: inherit;" /></a>
-					<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600" style="width: auto;height: 250px;"
-						[src]="product.articleVideos[0].videoPath| safe" title="YouTube video player" frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowfullscreen></iframe>
-				</div>
-					<div class="font-bold mt-2 block p-2" >
+					<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
+						[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
+						<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
+							class='news-img-hover-effect' style="height: 250px;">
+							<img src="{{storageUrl}}/{{product.mainImage}}"
+								style="width: 100%;cursor: pointer;height: inherit;" /></a>
+						<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600"
+							style="width: auto;height: 250px;" [src]="product.articleVideos[0].videoPath| safe"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen></iframe>
+					</div>
+					<div class="font-bold mt-2 block p-2">
 						<div style=" width: 20rem;" class="py-2">
 							<label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
 								{{product.categoryName}}</label>
@@ -236,23 +240,25 @@
 								{{product.articleHeading}} </label>
 						</a>
 					</div>
+				</div>
 			</div>
+
 		</div>
-		
-	</div>
-</ng-container>
+	</ng-container>
 
 </div>
-<div *ngIf="CatId == 1" class="grid"  style="padding-right: 20px;">
+<div *ngIf="CatId == 1" class="grid" style="padding-right: 20px;">
 	<ng-container *ngFor="let product of lstCatArticles; let index=index" class="">
 
 		<div class="lg:col-4 md:col-12">
-			<div class="flex card p-0 broder-rd-card" style="cursor: pointer;width: 350px;  border: 1px solid #000;background-color: #fff; border-radius: 5px;"	
-			routerLink="/news/{{product.articleId}}"  *ngIf="num>index">
+			<div class="flex card p-0 broder-rd-card"
+				style="cursor: pointer;width: 350px;  border: 1px solid #000;background-color: #fff; border-radius: 5px;"
+				routerLink="/news/{{product.articleId}}" *ngIf="num>index">
 
 				<div class="news-img-hover-effect p-0 broder-rd-card"
 					[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
-					<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}" class='news-img-hover-effect' style="height: 250px;">
+					<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
+						class='news-img-hover-effect' style="height: 250px;">
 						<img src="{{storageUrl}}/{{product.mainImage}}"
 							style="width: 100%;cursor: pointer;height:190px;" /></a>
 					<iframe *ngIf="product?.articleVideos[0]?.videoPath" style="width: 350px;height: 185px;"
@@ -274,41 +280,11 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="h-full md:col-6  lg:col-3">
-			<div class="  h-full p-0 back2  card border-round-2xl pointer fadeinleft  animation-duration-1000"
-				routerLink="/news/{{product.articleId}}">
-
-				<div class=" md:col-12  p-0 broder-rd-card" style="display: contents"
-					[ngClass]="!product.articleVideos[0]?.videoPath?'news-img-hover-effect':''">
-					<a *ngIf="!product?.articleVideos[0]?.videoPath" routerLink="/news/{{product.articleId}}"
-						class='news-img-hover-effect' style="height: 250px;">
-						<img src="{{storageUrl}}/{{product.mainImage}}"
-							style="width: 100%;cursor: pointer;height: inherit;" /></a>
-					<iframe *ngIf="product?.articleVideos[0]?.videoPath" width="600" style="width: auto;height: 250px;"
-						[src]="product.articleVideos[0].videoPath| safe" title="YouTube video player" frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowfullscreen></iframe>
-				</div>
-				<div class=" md:col-12 p-2" style="height: 10rem;">
-					<div class="font-bold mt-2">
-						<div style=" width: 100%;" class="py-2">
-							<label [class]="ult.language=='ar'?'tagAr text-sm pr-2 ':'text-sm tagEn'">
-								{{product.categoryName}}</label>
-						</div>
-						<a routerLink="/news/{{product.articleId}}">
-							<label class="col-4-sec-row mt-2" style="font-size: 15px !important;">
-								{{product.articleHeading}} </label>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div> -->
-
+		
 	</ng-container>
+	<div *ngIf="lstCatArticles.length>3" class="text-center col-12" style="cursor: pointer;" (click)="toggleNumber()">
+		{{ReadMore?"Read Less":"Read More "}} <br>
+		<i [class]="ReadMore?'pi pi-caret-up':'pi pi-caret-down'" style="font-size: 25px;  bottom:25px;"></i>
+	</div>
 
-
-</div>
-<div class="text-center" style="cursor: pointer;" (click)="onclick()">
-	{{"ReadMore" | translate}} <br>
-	<i class="fa fa-sort-down" style="font-size: 50px; position: relative; bottom:25px;"></i>
 </div>

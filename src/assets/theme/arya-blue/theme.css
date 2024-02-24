@@ -5354,7 +5354,7 @@ p-treeselect.ng-invalid.ng-dirty > .p-treeselect {
   height: 4rem;
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
   border-radius: 3px;
-  margin: 0 0.5rem;
+ 
 }
 .p-galleria .p-galleria-item-nav .p-galleria-item-prev-icon,
 .p-galleria .p-galleria-item-nav .p-galleria-item-next-icon {

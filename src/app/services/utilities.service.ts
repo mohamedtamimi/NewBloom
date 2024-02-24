@@ -51,7 +51,7 @@ export class UtilitiesService {
         let dir = 'ltr';
 
         if (!lang) {
-            lang = this.getData('lang', 'en');
+            lang = this.getData('lang', 'ar');
         }
 
         if (lang == 'ar') {

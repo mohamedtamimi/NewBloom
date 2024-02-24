@@ -103,6 +103,10 @@
 			<li class="nav-item p-3">
 				<a class="text-700 cursor-pointer line-height-3" style="color:#fff !important;;" [routerLink]="['/']">كلمة رئيس التحرير</a>
 			</li>
+			<li class="nav-item p-3">
+				<a *ngIf="userMode" class="text-700 cursor-pointer line-height-3" style="color:#fff !important;;" [routerLink]="['/dashboard']">{{user.user.userName}} <i class="pi pi-user"></i> </a>
+				<a *ngIf="userMode ==false" class="text-700 cursor-pointer line-height-3" style="color:#fff !important;;" [routerLink]="['/login']">تسجيل الدخول  </a>
+			</li>
 		  </ul>
 	</div>
 </div>

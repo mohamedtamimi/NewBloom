@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Category } from 'src/app/class/class';
@@ -13,10 +14,11 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 export class CategoryComponent implements OnInit {
 
   @ViewChild('filter') filter: ElementRef;
+  formsUser = JSON.parse(sessionStorage.getItem('userAuth'))?.user?.group?.sysPrivileges?.$values
 
   lstCategory : any[];
   ObjCat : Category;
-  constructor(private messageService: MessageService,private global : GlobalService,private utl:UtilitiesService) { 
+  constructor(private messageService: MessageService,private global : GlobalService,private utl:UtilitiesService,private router : Router) { 
     this.lstCategory = [];
     this.ObjCat = new  Category();
   }
@@ -24,6 +26,8 @@ export class CategoryComponent implements OnInit {
     this.messageService.add({severity: smsgeverity, summary: msgsummary, detail: msgdetail});
     }
   ngOnInit(): void {
+    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.GetAllCategories();
   }
   clear(table: Table) {

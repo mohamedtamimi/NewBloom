@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Region } from 'src/app/class/class';
@@ -11,11 +12,12 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class RegionComponent implements OnInit {
   @ViewChild('filter') filter: ElementRef;
-  
+  formsUser = JSON.parse(sessionStorage.getItem('userAuth'))?.user?.group?.sysPrivileges?.$values
+
   lstRegion : Region[];
   ObjRegion : Region;
 
-  constructor(private messageService: MessageService,private global : GlobalService) { 
+  constructor(private messageService: MessageService,private global : GlobalService,private router : Router) { 
     this.lstRegion = [];
     this.ObjRegion = new  Region();
   }
@@ -24,7 +26,8 @@ export class RegionComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
+    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.GetAllRegions();
   }
   clear(table: Table) {

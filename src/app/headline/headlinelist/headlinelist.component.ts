@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./headlinelist.component.scss']
 })
 export class HeadlinelistComponent implements  OnInit {
+  formsUser = JSON.parse(sessionStorage.getItem('userAuth'))?.user?.group?.sysPrivileges?.$values
   lstArticle : Article[];
   public storageUrl = environment.StorageUrl;
   @ViewChild('filter') filter: ElementRef;
@@ -18,6 +19,8 @@ export class HeadlinelistComponent implements  OnInit {
   }
 
   ngOnInit(): void {
+    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.GetUserArticles();
   }
   clear(table: Table) {

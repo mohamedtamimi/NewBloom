@@ -9,3 +9,11 @@
 		display: block !important;
 	}
 }
+
+::ng-deep .p-galleria .p-galleria-item-nav {
+	margin: 0 !important;
+}
+:host::ng-deep .p-galleria .p-galleria-indicators .p-galleria-indicator button {
+	// background-color: #bdbdbd;
+	// color: #4338CA;
+}

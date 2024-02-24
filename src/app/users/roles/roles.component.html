@@ -1,0 +1,202 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="col-12">
+    <div class="card">
+        <h4 translate>Roles Management</h4>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="flex justify-content-between flex-column sm:flex-row">
+                    <h6 translate>List Of Roles</h6>
+                    <button pButton label="{{'Create Role'|translate}}" class="p-button mb-2 mx-2"
+                        icon="pi pi-plus-circle" (click)=" initRole()"></button>
+                </div>
+
+
+                <p-table #dt1 [value]="roles" dataKey="id" [rows]="10" [rowHover]="true"
+                    styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['authorName']"
+                    responsiveLayout="scroll">
+                    <ng-template pTemplate="caption">
+                        <div class="flex justify-content-between flex-column sm:flex-row">
+                            <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash"
+                                (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left mb-2">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" #filter
+                                    (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                                    placeholder="{{'Search Keyword'|translate}}" class="w-full" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+
+                            <th>
+                                <div class="flex justify-content-between align-items-center" translate>
+                                    Role
+                                    <p-columnFilter type="text" field="articleHeading" display="menu"
+                                        placeholder="Search by name"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="flex justify-content-between align-items-center" translate>
+                                    Description
+                                    <p-columnFilter type="text" field="categoryName" display="menu"
+                                        placeholder="Search by name"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="flex justify-content-between align-items-center" translate>
+                                    Linked Users
+                                    <p-columnFilter type="date" field="publishDate" display="menu"
+                                        placeholder="Search by name"></p-columnFilter>
+                                </div>
+                            </th>
+
+                            <th translate>
+                                Actions
+                            </th>
+
+
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-roles>
+                        <tr>
+                            <td [style.text-align]="lang=='ar'?'right':'left'">
+                                {{roles.groupName}}
+                            </td>
+                            <td [style.text-align]="lang=='ar'?'right':'left'">
+
+                                {{roles.jobDesc}}
+                            </td>
+                            <td [style.text-align]="lang=='ar'?'right':'left'">
+                                {{roles.no}}
+                            </td>
+                            <td>
+                                <button pButton pRipple type="button" icon="pi pi-pencil" (click)="getPrev(roles,true)"
+                                    class="p-button-rounded p-button-info p-button-outlined mr-2 mb-2"></button>
+
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">No Users found.</td>
+                        </tr>
+                    </ng-template>
+
+                </p-table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<p-sidebar *ngIf="createRoleSide" [(visible)]="createRoleSide" position="right" [showCloseIcon]="false"
+    styleClass="xlSide dr">
+    <p-toolbar class="justify-content: space-between">
+        <div [style.text-align]="lang=='ar'?'left':'right'">
+            <p-button *ngIf="!formsMode" [icon]="loading?'pi pi-spin pi-spinner':'pi pi-check'" [disabled]="!groupName"
+                (click)="createGroup()" label="Create" pAutoFocus [autofocus]="true"></p-button>
+        </div>
+        <div [style.text-align]="lang=='ar'?'left':'right'">
+            <button pButton (click)="createRoleSide =false" class="close-button p-button-rounded p-button-text "
+                style="background-color: aliceblue;color: red;" icon="pi pi-times"></button>
+        </div>
+
+
+    </p-toolbar>
+    <ng-template pTemplate="content">
+        <div class="grid" style="text-align: right;">
+            <div class="lg:col-6 sm:col-12" style="width: -webkit-fill-available;">
+                <div class="block">
+                    <div class="text-lg font-semibold mb-2" translate>
+                        Role Name
+                        <span style="color: var(--danger) !important">*</span>
+                    </div>
+                    <input [(ngModel)]="groupName" [disabled]="formsMode" required="true"
+                        style="width: -webkit-fill-available;" placeholder="{{'Enter'|translate}} {{'Role'|translate}}"
+                        name="Role" pInputText />
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="formsMode" class="grid pt-3">
+            <div class="col-12 flex" *ngFor="let prev of forms">
+                <div class="col-5" style="text-align: start;">
+                    <h2>{{prev?.formName | translate}}</h2>
+                </div>
+                <div class="col-3" style="text-align: start;">
+                    <p-toggleButton onLabel="Confirm" offLabel="Reject" onIcon="pi pi-check" offIcon="pi pi-times"
+                        [disables]='!groupName' (onChange)="createPrev(prev)"></p-toggleButton>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+
+</p-sidebar>
+
+<p-sidebar *ngIf="rolesSideBar" [(visible)]="rolesSideBar" position="right" [showCloseIcon]="false"
+    styleClass="xlSide dr">
+    <p-toolbar class="justify-content: space-between">
+        <div [style.text-align]="lang=='ar'?'left':'right'">
+            <p-button *ngIf="!formsMode" [icon]="loading?'pi pi-spin pi-spinner':'pi pi-check'" [disabled]="!groupName"
+                (click)="editGroup()" label="{{'Edit'|translate}}" pAutoFocus [autofocus]="true"></p-button>
+        </div>
+        <div [style.text-align]="lang=='ar'?'left':'right'">
+            <i (click)="rolesSideBar =false" class="pi pi-times pointer " style="color: red;"></i>
+        </div>
+
+
+    </p-toolbar>
+    <ng-template pTemplate="content">
+        <div class="grid" style="text-align: right;">
+            <div class="lg:col-6 sm:col-12" style="width: -webkit-fill-available;">
+                <div class="block">
+                    <div class="text-lg font-semibold mb-2" translate>
+                        Role Name
+                        <span style="color: var(--danger) !important">*</span>
+                    </div>
+                    <input [(ngModel)]="groupName" [disabled]="formsMode" required="true"
+                        style="width: -webkit-fill-available;" placeholder="{{'Enter'|translate}} {{'Role'|translate}}"
+                        name="Role" pInputText />
+                </div>
+            </div>
+
+        </div>
+        <div class="grid pt-3">
+            <div class="col-12 flex" *ngFor="let prev of selectedRole">
+                <div class="col-5" style="text-align: start;">
+                    <h2 style="color: blue;">{{prev?.form?.formName | translate}}</h2>
+                </div>
+                <div class="col-3" style="text-align: start;">
+                    <!-- <p-inputSwitch ngDefaultControl [(ngModel)]="prev.visible" (onChange)="createPrev(prev)"></p-inputSwitch> -->
+
+                    <i class="pi pi-trash pointer text-danger" style="font-size: 1.5rem"></i>
+
+                </div>
+            </div>
+        </div>
+        <div class="block mt-5 col-12" *ngIf="forms.length">
+            <div class="flex col-6" style="justify-content: space-between;">
+                <h3 class="primary-color">{{showPages?('Hide the rest of the pages'|translate):('Show remaining pages'|translate)}}</h3>
+                <p-button (click)="showPages=!showPages" [icon]="showPages?'pi pi-angle-up':'pi pi-angle-down' " style="font-size: 1.5rem"></p-button>
+
+            </div>
+            <div class="grid" *ngIf="showPages">
+                <div class="col-12 flex" *ngFor="let prev of forms">
+                    <div class="col-5" style="text-align: start;">
+                        <h2>{{prev?.formName | translate}}</h2>
+                    </div>
+                    <div class="col-3" style="text-align: start;">
+                        <p-button (click)="createPrev(prev)" icon="pi pi-plus pointer"></p-button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</p-sidebar>
