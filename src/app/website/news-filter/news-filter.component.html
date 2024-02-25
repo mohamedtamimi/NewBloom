@@ -58,9 +58,9 @@
                     </div>
                 </ng-template>
             </p-dataView>
-            <div class="text-center" style="cursor: pointer;" (click)="onclick()">
-                {{"ReadMore" | translate}} <br>
-                <i class="fa fa-sort-down" style="font-size: 50px; position: relative; bottom:25px;"></i>
+            <div *ngIf="lstCatArticles.length>3" class="text-center col-12" style="cursor: pointer;" (click)="toggleNumber()">
+                {{ReadMore?"Read Less":"Read More "}} <br>
+                <i [class]="ReadMore?'pi pi-caret-up':'pi pi-caret-down'" style="font-size: 25px;  bottom:25px;"></i>
             </div>
             <!-- <button *ngIf="ReadMore>num" (click)="onclick()" type="button" class="btn  btn-danger text-center">
                 {{ReadMore?"Read More":"Read Less"}}

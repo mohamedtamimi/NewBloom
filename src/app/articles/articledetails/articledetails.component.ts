@@ -18,6 +18,7 @@ export class ArticledetailsComponent implements OnInit {
   @ViewChild('uploader', {static: false}) uploader: FileUpload;
   @ViewChild('filter') filter: ElementRef;
   public storageUrl = environment.StorageUrl;
+  formsUser = JSON.parse(sessionStorage.getItem('userAuth'))?.user?.group?.sysPrivileges?.$values
 
   type: number;
   ArticalId : number;
@@ -59,7 +60,8 @@ export class ArticledetailsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-   
+    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.LoadDefinitions();
     
     this.arouter.paramMap.subscribe((params: ParamMap) => {

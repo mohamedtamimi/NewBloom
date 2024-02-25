@@ -27,8 +27,8 @@ export class AppMenuComponent implements OnInit {
     constructor(public appMain: AppMainComponent, private utilities: UtilitiesService,private router:Router) { }
 
     ngOnInit() {
-        // this.initMenu()
-        this.afterCheckPremssin()
+        this.initMenu()
+        // this.afterCheckPremssin()
 
     }
     initMenu() {

@@ -13,12 +13,17 @@ import { environment } from 'src/environments/environment';
 export class ArticlelistComponent implements OnInit {
   lstArticle : Article[];
   public storageUrl = environment.StorageUrl;
+  formsUser = JSON.parse(sessionStorage.getItem('userAuth'))?.user?.group?.sysPrivileges?.$values
+
   @ViewChild('filter') filter: ElementRef;
   constructor(private global : GlobalService,private router : Router) { 
+    
     this.lstArticle = [];
   }
 
   ngOnInit(): void {
+    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.GetUserArticles();
   }
   clear(table: Table) {

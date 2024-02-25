@@ -15,7 +15,7 @@ export class NewsbycategoryComponent implements OnInit {
   lstCatArticles: ArticleSearch[];
 
   @Input() CatId: number = 0;
-  num = 3;
+  num = 6;
   ReadMore: boolean = false
 
   public storageUrl = environment.StorageUrl;
@@ -74,7 +74,7 @@ export class NewsbycategoryComponent implements OnInit {
 
 
    toggleNumber() {
-    this.num = this.ReadMore ? 99 : 3;
+    this.num = this.ReadMore ? 3 : 99;    
     this.ReadMore = !this.ReadMore;
   }
 

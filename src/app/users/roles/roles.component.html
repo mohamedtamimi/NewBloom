@@ -34,22 +34,19 @@
                             <th>
                                 <div class="flex justify-content-between align-items-center" translate>
                                     Role
-                                    <p-columnFilter type="text" field="articleHeading" display="menu"
+                                    <p-columnFilter type="text" field="groupName" display="menu"
                                         placeholder="Search by name"></p-columnFilter>
                                 </div>
                             </th>
                             <th>
                                 <div class="flex justify-content-between align-items-center" translate>
                                     Description
-                                    <p-columnFilter type="text" field="categoryName" display="menu"
-                                        placeholder="Search by name"></p-columnFilter>
+                                   
                                 </div>
                             </th>
                             <th>
                                 <div class="flex justify-content-between align-items-center" translate>
-                                    Linked Users
-                                    <p-columnFilter type="date" field="publishDate" display="menu"
-                                        placeholder="Search by name"></p-columnFilter>
+                                 
                                 </div>
                             </th>
 
@@ -172,9 +169,7 @@
                     <h2 style="color: blue;">{{prev?.form?.formName | translate}}</h2>
                 </div>
                 <div class="col-3" style="text-align: start;">
-                    <!-- <p-inputSwitch ngDefaultControl [(ngModel)]="prev.visible" (onChange)="createPrev(prev)"></p-inputSwitch> -->
-
-                    <i class="pi pi-trash pointer text-danger" style="font-size: 1.5rem"></i>
+                    <!-- <i class="pi pi-trash pointer text-danger" (click)="deletePrev(prev.groupId,prev.formId,prev)" style="font-size: 1.5rem"></i> -->
 
                 </div>
             </div>

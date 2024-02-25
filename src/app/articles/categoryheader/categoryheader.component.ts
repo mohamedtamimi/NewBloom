@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Article, ArticleSearch, Category } from 'src/app/class/class';
 import { GlobalService } from 'src/app/services/global.service';
@@ -12,11 +13,13 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoryheaderComponent implements OnInit {
   lstSourceArticle : ArticleSearch[];
+  formsUser = JSON.parse(sessionStorage.getItem('userAuth'))?.user?.group?.sysPrivileges?.$values
+
   lstTragetArticle : ArticleSearch[];
   lstCategory : any[];
   selectedCategory : number;
   public storageUrl = environment.StorageUrl;
-  constructor(private global : GlobalService,private messageService: MessageService,private utl:UtilitiesService) { 
+  constructor(private global : GlobalService,private messageService: MessageService,private utl:UtilitiesService,private router : Router) { 
     this.lstSourceArticle = [];
     this.lstTragetArticle = [];
     this.lstCategory = [];
@@ -27,6 +30,8 @@ export class CategoryheaderComponent implements OnInit {
     }
  
   ngOnInit(): void {
+    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.LoadDefinitions();
   }
   LoadDefinitions(){

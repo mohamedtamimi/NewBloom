@@ -48,7 +48,7 @@ export class RolesComponent implements OnInit {
 
   ngOnInit(): void {
     const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
-    isAllowed? true :this.router.navigateByUrl('/dashboard')
+    // isAllowed? true :this.router.navigateByUrl('/dashboard')
     
     
     this.getGroups()
@@ -87,7 +87,6 @@ export class RolesComponent implements OnInit {
     })
   }
   editGroup() {
-    console.log(this.groupID);
         this.loading = true
     const subscription = this.globalService.editGroup(this.groupName,this.groupID).subscribe((results: any) => {
     
@@ -102,12 +101,17 @@ export class RolesComponent implements OnInit {
     })
   }
   getPrev(group?,status?:boolean) {
+    console.log(group);
+    
     this.groupID=group?.groupId
     this.showPages=false
     const subscription = this.globalService.getPrev(status?group.groupId:group).subscribe((results: any) => {
       this.getForms()
       this.selectedRole=results.$values
-      this.groupName=group.groupName
+      if (status) {
+        this.groupName=group.groupName
+
+      }
       this.rolesSideBar=true;
       subscription.unsubscribe()
     }, error => {
@@ -128,16 +132,29 @@ export class RolesComponent implements OnInit {
     })
   }
   getForms() {
-    
     const subscription = this.globalService.getForms().subscribe((results: any) => {
       this.forms =[]
       this.forms = results.$values
       if (this.selectedRole) {
         this.forms = this.forms.filter(obj2 => !this.selectedRole.some(obj1 => obj1.form.formName === obj2.formName));
-
       }
-console.log(this.forms);
-
+      subscription.unsubscribe()
+    }, error => {
+      console.log(error);
+      subscription.unsubscribe()
+    })
+  }
+  deletePrev(groupId,FormId,data) {
+    console.log(groupId);
+    console.log(FormId);
+    console.log(data);
+    
+    const subscription = this.globalService.deletePrev(groupId,FormId).subscribe((results: any) => {
+      if (this.rolesSideBar) {
+        this.getPrev(this.groupID,false)
+      }
+      this.groupID=results.groupId
+      this.messageService?.add({ severity: 'success', detail: 'تم حذف الصلاحية', });
       subscription.unsubscribe()
     }, error => {
       console.log(error);

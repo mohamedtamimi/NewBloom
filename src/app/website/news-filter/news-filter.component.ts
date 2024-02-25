@@ -15,7 +15,7 @@ export class NewsFilterComponent implements OnInit {
   articales
   type
   category_Name
-  num=8;
+  num=6;
   ReadMore:boolean = false
 
   public storageUrl = environment.StorageUrl;
@@ -33,7 +33,10 @@ export class NewsFilterComponent implements OnInit {
 
   }
 
-
+  toggleNumber() {
+    this.num = this.ReadMore ? 3 : 99;    
+    this.ReadMore = !this.ReadMore;
+  }
   getfilters(id,type){
 
     this.global.getFilters(id,type).subscribe( data => {

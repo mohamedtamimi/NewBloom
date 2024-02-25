@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Article, ArticleSearch, Region } from 'src/app/class/class';
 import { GlobalService } from 'src/app/services/global.service';
@@ -14,8 +15,10 @@ export class RegionheaderComponent implements OnInit {
   lstTragetArticle : ArticleSearch[];
   lstRegion : Region[];
   selectedRegion : number;
+  formsUser = JSON.parse(sessionStorage.getItem('userAuth'))?.user?.group?.sysPrivileges?.$values
+
   public storageUrl = environment.StorageUrl;
-  constructor(private global : GlobalService,private messageService: MessageService) { 
+  constructor(private global : GlobalService,private messageService: MessageService,private router : Router) { 
     this.lstSourceArticle = [];
     this.lstTragetArticle = [];
     this.lstRegion = [];
@@ -26,6 +29,8 @@ export class RegionheaderComponent implements OnInit {
     }
  
   ngOnInit(): void {
+    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.LoadDefinitions();
   }
   LoadDefinitions(){

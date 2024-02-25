@@ -74,6 +74,11 @@ export class GlobalService {
             headers: this.CreateHeaderWithLangAndCompany()
         });
     }
+    deletePrev(groupId,formId) {
+        return this.http.post<any>(`${this.api}/SysPrivilege/Deleteprivilege/${groupId}/${formId}`,{}, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
     createGroup(groupName, jobDesc) {
         return this.http.post<any>(`${this.api}/SysGroup/AddGroup`, { groupName: groupName, jobDesc: jobDesc }, {
             headers: this.CreateHeaderWithLangAndCompany()
