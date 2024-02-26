@@ -74,7 +74,7 @@ export class NewsbycategoryComponent implements OnInit {
 
 
    toggleNumber() {
-    this.num = this.ReadMore ? 3 : 99;    
+    this.num = this.ReadMore ? 6 : 99;    
     this.ReadMore = !this.ReadMore;
   }
 

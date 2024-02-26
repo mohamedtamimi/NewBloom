@@ -48,7 +48,7 @@ export class RolesComponent implements OnInit {
 
   ngOnInit(): void {
     const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
-    // isAllowed? true :this.router.navigateByUrl('/dashboard')
+    isAllowed? true :this.router.navigateByUrl('/dashboard')
     
     
     this.getGroups()
