@@ -198,7 +198,7 @@
 <ng-template pTemplate="footer">
     <p-button [icon]="loading?'pi pi-spin pi-spinner':'pi pi-check'"  [disabled]="form?.invalid" (click)="editMode?updateUser(): createUser()" label="Save" pAutoFocus [autofocus]="true"></p-button>
 
-    <button pButton [icon]="loading?'pi pi-spin pi-spinner':''" *ngIf="editMode"   (click)="userStatus()" [class]="user.active==1?'p-button-danger':'p-button-info'" [label]="user.active==1?'Suspend ':'Activate'" pAutoFocus [autofocus]="true"></button>
+    <button pButton  *ngIf="editMode"   (click)="userStatus()" [class]="user.active==1?'p-button-danger':'p-button-info'" [label]="user.active==1?'Suspend ':'Activate'" pAutoFocus [autofocus]="true"></button>
 
     
 </ng-template>

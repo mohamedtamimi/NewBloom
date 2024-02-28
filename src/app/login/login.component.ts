@@ -59,6 +59,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       sessionStorage.setItem('userAuth', JSON.stringify(user))
       this.router?.navigate(['/dashboard']);
+      setTimeout(() => {
+        location.reload()
+
+      }, 1000);
     }, error => {
     
       console.log(error);
