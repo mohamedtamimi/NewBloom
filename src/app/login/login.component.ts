@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   valCheck: string[] = ['remember'];
 
   password: string;
-  
+  loading: boolean = false
+
   username: string;
 
   constructor(public router: Router,private authService:AuthService,public messageService?: MessageService,){
@@ -54,8 +55,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     if (!this.password || !this.username) return this.messageService?.add({ severity: 'error', detail: 'من فضلك إدخل جميع المعلومات المطلوبة' });
-
+    this.loading=true
     this.authService.login(this.username, this.password).subscribe((user: any) => {
+      this.loading=false
 
       sessionStorage.setItem('userAuth', JSON.stringify(user))
       this.router?.navigate(['/dashboard']);
@@ -64,7 +66,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       }, 1000);
     }, error => {
-    
+      this.loading=false
+
       console.log(error);
     })
   }

@@ -24,7 +24,7 @@
 							</p-checkbox>
 							<label for="rememberme3" class="ml-2" translate>Remember me</label>
 						</div><a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer" translate>Forgot password</a></div>
-					<button pButton (click)="login()" label="{{'Login'|translate}}" icon="pi pi-user" class="p-element p-ripple w-full p-button p-component"></button>
+					<button pButton (click)="login()" label="{{'Login'|translate}}" [icon]="loading?'pi pi-spin pi-spinner':'pi pi-user'"  class="p-element p-ripple w-full p-button p-component"></button>
 				</div>
 			</div>
 		</div>
