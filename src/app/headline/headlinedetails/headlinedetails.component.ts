@@ -48,7 +48,7 @@ export class HeadlinedetailsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    const isAllowed = (this.formsUser.find(form => form?.form?.formPath === this.router.url) || /^\/headline\/\d+\/\d+$/.test(this.router.url));
     isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.LoadDefinitions();
      

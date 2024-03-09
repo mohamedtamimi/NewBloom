@@ -55,6 +55,8 @@ export class NewsbycategoryComponent implements OnInit {
     let art = new Article();
     art.fkArticleTypeId = 1;
     art.fkCategoryId = this.CatId;
+    this.ReadMore=false
+    this.num = 6
     this.global.GetHighlightArticleByRegionCategory(art).subscribe(res => {
 
       res.map(arc => {

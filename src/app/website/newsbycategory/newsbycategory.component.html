@@ -282,8 +282,8 @@
 		</div>
 		
 	</ng-container>
-	<div *ngIf="lstCatArticles.length>6" class="text-center col-12" style="cursor: pointer;" (click)="toggleNumber()">
-		{{ReadMore?"Read Less":"Read More "}} <br>
+	<div *ngIf="lstCatArticles?.length>6" class="text-center col-12" style="cursor: pointer;" (click)="toggleNumber()">
+		{{ReadMore?("Read Less"|translate):("Read More"|translate)}} <br>
 		<i [class]="ReadMore?'pi pi-caret-up':'pi pi-caret-down'" style="font-size: 25px;  bottom:25px;"></i>
 	</div>
 

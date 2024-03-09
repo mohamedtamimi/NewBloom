@@ -123,6 +123,11 @@
     "Phone":"Phone",
     "Enter":"Enter",
     "Status":"Status",
+    "Role":"Role",
+    "Role Name":"Role Name",
+    "Description":"Description",
+    "Select a Role":"Select a Role",
+    "Actions":"Actions",
     "Roles":"Roles",
     "Hide the rest of the pages":"Hide the rest of the pages",
     "Show remaining pages":"Show remaining pages",
@@ -135,5 +140,6 @@
     "PrivacyPolice" : "Privacy Police",
     "AboutUs" : "About Us",
     "privacy" : "Privacy",
-    "ReadMore" : "ReadMore"
+    "Read Less" : "Read Less",
+    "Read More" : "Read More"
 }

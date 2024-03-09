@@ -7,7 +7,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="flex justify-content-between flex-column sm:flex-row">
-                    <h6 translate>List Of Roles</h6>
                     <button pButton label="{{'Create Role'|translate}}" class="p-button mb-2 mx-2"
                         icon="pi pi-plus-circle" (click)=" initRole()"></button>
                 </div>
@@ -95,11 +94,11 @@
     <p-toolbar class="justify-content: space-between">
         <div [style.text-align]="lang=='ar'?'left':'right'">
             <p-button *ngIf="!formsMode" [icon]="loading?'pi pi-spin pi-spinner':'pi pi-check'" [disabled]="!groupName"
-                (click)="createGroup()" label="Create" pAutoFocus [autofocus]="true"></p-button>
+                (click)="createGroup()" label="{{'Create Role'|translate}}" pAutoFocus [autofocus]="true"></p-button>
         </div>
         <div [style.text-align]="lang=='ar'?'left':'right'">
             <button pButton (click)="createRoleSide =false" class="close-button p-button-rounded p-button-text "
-                style="background-color: aliceblue;color: red;" icon="pi pi-times"></button>
+                style="color: red;" icon="pi pi-times"></button>
         </div>
 
 

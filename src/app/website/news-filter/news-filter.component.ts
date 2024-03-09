@@ -12,10 +12,10 @@ import { environment } from 'src/environments/environment';
 export class NewsFilterComponent implements OnInit {
 
   constructor(private arouter: ActivatedRoute,private global : GlobalService,public ult: UtilitiesService) { }
-  articales
+  articales=[]
   type
   category_Name
-  num=6;
+  num=8;
   ReadMore:boolean = false
 
   public storageUrl = environment.StorageUrl;
@@ -34,17 +34,18 @@ export class NewsFilterComponent implements OnInit {
   }
 
   toggleNumber() {
-    this.num = this.ReadMore ? 6 : 99;    
+    this.num = this.ReadMore ? 8 : 99;    
     this.ReadMore = !this.ReadMore;
   }
-  getfilters(id,type){
-
+  getfilters(id,type){    
+    this.ReadMore=false
+    this.num = 8
     this.global.getFilters(id,type).subscribe( data => {
-     console.log('fliter',data);
+     console.log(type,data);
      
      this.articales=data
-
-     this.category_Name = this.articales[0].categoryName
+    
+     this.category_Name = this.articales[0]?.categoryName
     })
   }
 

@@ -22,7 +22,7 @@ export class ArticlelistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const isAllowed= this.formsUser.find(form=>form?.form?.formPath == this.router.url)
+    const isAllowed = (this.formsUser.find(form => form?.form?.formPath === this.router.url) || /^\/definearticle\/\d+\/\d+$/.test(this.router.url));
     isAllowed? true :this.router.navigateByUrl('/dashboard')
     this.GetUserArticles();
   }
@@ -33,6 +33,9 @@ export class ArticlelistComponent implements OnInit {
 
 GetUserArticles(){
 this.global.GetUserArticles(1).subscribe(res =>{
+  res.sort((a, b) => {        
+    return b.articleId - a.articleId;
+  })
   this.lstArticle = res;
 });
 }

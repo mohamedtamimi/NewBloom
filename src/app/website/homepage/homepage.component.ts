@@ -16,8 +16,8 @@ export class HomepageComponent implements OnInit {
 
   projectcount:number = 0;
 
-  accuratecount:number = 0;
-  clientcount:number = 0;
+  accuratecount:number =1.1;
+  clientcount:number = 2.2;
   customerfeedback:number = 0;
   snapchatcount:number = 0;
 
@@ -134,23 +134,23 @@ this.GetHighlightedArticles();
   },8) //10 is milisecond you can control it
 
 
-  accuratecountstop:any = setInterval(()=>{
-    this.accuratecount++;
-    if(this.accuratecount == 100)
-    {
+  // accuratecountstop:any = setInterval(()=>{
+  //   this.accuratecount++;
+  //   if(this.accuratecount == 100)
+  //   {
       
-      clearInterval(this.accuratecountstop);
-    }
-  },10) 
+  //     clearInterval(this.accuratecountstop);
+  //   }
+  // },10) 
 
-  clientcountstop:any = setInterval(()=>{
-    this.clientcount++;
-    if(this.clientcount == 200)
-    {
+  // clientcountstop:any = setInterval(()=>{
+  //   this.clientcount++;
+  //   if(this.clientcount == 2.2)
+  //   {
       
-      clearInterval(this.clientcountstop);
-    }
-  },10)
+  //     clearInterval(this.clientcountstop);
+  //   }
+  // },10)
 
   customerfeedbackstop:any = setInterval(()=>{
     this.customerfeedback++;

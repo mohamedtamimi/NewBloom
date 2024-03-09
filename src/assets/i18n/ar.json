@@ -82,6 +82,11 @@
     "Article Definition" : "تعريف المقال",
     "Delete" : "حذف",
     "Edit" : "تعديل",
+    "Role" : "دور",
+    "Description" : "وصف",
+    "Role Name" : "اسم الدور",
+    "Select a Role" : "حدد دورًا",
+    "Actions":"أجراءات",
     "Tag EN" : "العلامة بالانجليزي",
     "Tag AR" : "العلامة بالعربي",
     "Assign Region Articles List" : "تعيين قائمة المقالات المنطقة",
@@ -123,6 +128,7 @@
     "Show remaining pages":"إظهار باقي صفحات",
     "Status":"حالة",
     "Enter":"إدخل",
+    "Read Less":"أقرأ أقل",
     "Roles":"الأدوار",
     "Hide the rest of the pages":"إخفاء باقي صفحات",
     "Edit User":"تعديل المستخدم",
@@ -134,5 +140,5 @@
     "PrivacyPolice" : "سياسات الاستخدام",
     "AboutUs" : "من نحن",
     "privacy" : "إشعار الخصوصية",
-    "ReadMore" : "اقرأ المزيد"
+    "Read More" : "اقرأ المزيد"
 }
