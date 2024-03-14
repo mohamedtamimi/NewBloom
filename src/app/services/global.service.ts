@@ -134,6 +134,13 @@ export class GlobalService {
             headers: this.CreateHeaderWithLangAndCompany()
         });
     }
+    updatePassword(user) {
+        return this.http.post<any>(`${this.api}/SysUser/UpdatePassword/${user.userId}`, {          
+            userPwd: user.userPwd,
+        }, {
+            headers: this.CreateHeaderWithLangAndCompany()
+        });
+    }
     userStatus(user) {
         return this.http.post<any>(`${this.api}/SysUser/UpdateUser/${user.userId}`, {
             userName: user.userName,

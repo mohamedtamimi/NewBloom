@@ -129,6 +129,7 @@
     "Select a Role":"Select a Role",
     "Actions":"Actions",
     "Roles":"Roles",
+    "Activate":"Activate",
     "Hide the rest of the pages":"Hide the rest of the pages",
     "Show remaining pages":"Show remaining pages",
     "Create Role":"Create Role",
@@ -140,6 +141,8 @@
     "PrivacyPolice" : "Privacy Police",
     "AboutUs" : "About Us",
     "privacy" : "Privacy",
+    "Suspend" : "Suspend",
+    "Change Password" : "Change Password",
     "Read Less" : "Read Less",
     "Read More" : "Read More"
 }

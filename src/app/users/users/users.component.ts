@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
   UserDialog: boolean = false
   loading: boolean = false
   editMode: boolean = false
+  passwordDialog: boolean = false
 
   user: any = { userName: null, userEmail: null, userFullName: null, active: true, phoneNo: null, userPwd: null, rePassword: null, groupId: null, lastChangePassword: new Date(), jobDesc: null }
   constructor(private globalService: GlobalService, public messageService: MessageService,private router:Router) { }
@@ -114,6 +115,24 @@ export class UsersComponent implements OnInit {
       this.loading = false
       this.UserDialog = false
       this.getUSers()
+      subscription.unsubscribe()
+    }, error => {
+      this.loading = false
+
+      console.log(error);
+      subscription.unsubscribe()
+    })
+  }
+  changePassword(){
+    if (this.user.userPwd != this.user.rePassword) {
+      this.messageService?.add({ severity: 'error', detail: 'تأكد من تكرار كلمة المرور بشكل صحيح' });
+      return
+    }
+    this.loading = true
+    const subscription = this.globalService.updatePassword(this.user).subscribe((results: any) => {
+      this.loading = false
+      this.UserDialog = false
+      this.passwordDialog = false
       subscription.unsubscribe()
     }, error => {
       this.loading = false
